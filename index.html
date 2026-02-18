@@ -161,27 +161,60 @@
         }
         
         /* Filters */
-        .filters {
+        .filter-bar {
             display: flex;
-            gap: 10px;
-            padding: 15px 20px;
-            overflow-x: auto;
-            scrollbar-width: none;
+            gap: 8px;
+            padding: 12px 20px;
+            align-items: center;
         }
-        .filters::-webkit-scrollbar { display: none; }
-        .filter-btn {
-            padding: 8px 16px;
+        .sort-btn {
+            padding: 8px 14px;
             background: #1a1a1a;
             border: 1px solid #333;
             border-radius: 20px;
             font-size: 13px;
             color: #888;
-            white-space: nowrap;
             cursor: pointer;
         }
-        .filter-btn.active {
+        .sort-btn.active {
             background: #00d4ff;
             color: #000;
+            border-color: #00d4ff;
+        }
+        .filter-toggle {
+            padding: 8px 14px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #888;
+            cursor: pointer;
+            margin-left: auto;
+        }
+        .filter-toggle.active {
+            background: #00d4ff;
+            color: #000;
+            border-color: #00d4ff;
+        }
+        .filter-panel {
+            display: none;
+            padding: 0 20px 15px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .filter-panel.show { display: flex; }
+        .filter-tag {
+            padding: 8px 14px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #888;
+            cursor: pointer;
+        }
+        .filter-tag.active {
+            background: rgba(0,212,255,0.2);
+            color: #00d4ff;
             border-color: #00d4ff;
         }
         
@@ -281,17 +314,20 @@
         
         <!-- All Page -->
         <div class="page" id="page-all">
-            <div class="filters">
-                <div class="filter-btn active" data-filter="hot" onclick="filterBy('hot')">热度</div>
-                <div class="filter-btn" data-filter="new" onclick="filterBy('new')">最新</div>
-                <div class="filter-btn" data-filter="match" onclick="filterBy('match')">💕 Soulmate</div>
-                <div class="filter-btn" data-filter="which" onclick="filterBy('which')">🎭 Which X</div>
-                <div class="filter-btn" data-filter="type" onclick="filterBy('type')">📝 Type</div>
-                <div class="filter-btn" data-filter="how" onclick="filterBy('how')">📊 How</div>
-                <div class="filter-btn" data-filter="hidden" onclick="filterBy('hidden')">🔮 Secret</div>
-                <div class="filter-btn" data-filter="whatwould" onclick="filterBy('whatwould')">❓ What If</div>
-                <div class="filter-btn" data-filter="pick" onclick="filterBy('pick')">✌️ Pick</div>
-                <div class="filter-btn" data-filter="future" onclick="filterBy('future')">🔮 Future</div>
+            <div class="filter-bar">
+                <div class="sort-btn active" data-sort="hot" onclick="setSort('hot')">热度</div>
+                <div class="sort-btn" data-sort="new" onclick="setSort('new')">最新</div>
+                <div class="filter-toggle" onclick="toggleFilter()">筛选</div>
+            </div>
+            <div class="filter-panel" id="filter-panel">
+                <div class="filter-tag" data-cat="match" onclick="toggleCategory('match')">💕 Soulmate</div>
+                <div class="filter-tag" data-cat="which" onclick="toggleCategory('which')">🎭 Which X</div>
+                <div class="filter-tag" data-cat="type" onclick="toggleCategory('type')">📝 Type</div>
+                <div class="filter-tag" data-cat="how" onclick="toggleCategory('how')">📊 How</div>
+                <div class="filter-tag" data-cat="hidden" onclick="toggleCategory('hidden')">🔮 Secret</div>
+                <div class="filter-tag" data-cat="whatwould" onclick="toggleCategory('whatwould')">❓ What If</div>
+                <div class="filter-tag" data-cat="pick" onclick="toggleCategory('pick')">✌️ Pick</div>
+                <div class="filter-tag" data-cat="future" onclick="toggleCategory('future')">🔮 Future</div>
             </div>
             <div class="grid" id="all-list"></div>
         </div>
@@ -384,7 +420,9 @@
             {id: 'meet-soulmate', title: 'When will you meet soulmate?', category: 'future', hot: 490000}
         ];
         
-        let currentFilter = 'hot';
+        let currentSort = 'hot';
+        let selectedCategories = [];
+        let filterPanelOpen = false;
         
         // Init
         function init() {
@@ -405,14 +443,16 @@
         function renderAll() {
             let list = [...themes];
             
-            // Filter
-            if (currentFilter === 'hot') {
+            // Filter by categories (multi-select)
+            if (selectedCategories.length > 0) {
+                list = list.filter(t => selectedCategories.includes(t.category));
+            }
+            
+            // Sort
+            if (currentSort === 'hot') {
                 list.sort((a,b) => b.hot - a.hot);
-            } else if (currentFilter === 'new') {
-                // Simulated new - just reverse
-                list.reverse();
-            } else {
-                list = list.filter(t => t.category === currentFilter);
+            } else if (currentSort === 'new') {
+                list.reverse(); // Simulated new
             }
             
             document.getElementById('all-list').innerHTML = list.map(t => createCard(t)).join('');
@@ -426,10 +466,29 @@
             </div>`;
         }
         
-        function filterBy(filter) {
-            currentFilter = filter;
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.filter === filter);
+        function setSort(sort) {
+            currentSort = sort;
+            document.querySelectorAll('.sort-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.sort === sort);
+            });
+            renderAll();
+        }
+        
+        function toggleFilter() {
+            filterPanelOpen = !filterPanelOpen;
+            document.getElementById('filter-panel').classList.toggle('show', filterPanelOpen);
+            document.querySelector('.filter-toggle').classList.toggle('active', filterPanelOpen);
+        }
+        
+        function toggleCategory(cat) {
+            const idx = selectedCategories.indexOf(cat);
+            if (idx > -1) {
+                selectedCategories.splice(idx, 1);
+            } else {
+                selectedCategories.push(cat);
+            }
+            document.querySelectorAll('.filter-tag').forEach(tag => {
+                tag.classList.toggle('active', selectedCategories.includes(tag.dataset.cat));
             });
             renderAll();
         }
