@@ -31,8 +31,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .match-item{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.05);padding:12px 16px;border-radius:12px}
 .match-bar{flex:1;height:8px;background:#333;border-radius:4px;overflow:hidden}
 .match-fill{height:100%;background:linear-gradient(90deg,#00d4ff,#00ff88);border-radius:4px}
-.m-name{width:80px;text-align:left;font-weight:500}
-.m-pct{width:40px;text-align:right;color:#00d4ff;font-weight:600}
+.match-name{width:80px;text-align:left;font-weight:500}
+.match-percent{width:40px;text-align:right;color:#00d4ff;font-weight:600}
 .share-btns{display:flex;gap:12px;justify-content:center}
 .share-btn{padding:12px 24px;border-radius:25px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s}
 .share-btn.primary{background:#00d4ff;color:#000}
@@ -41,13 +41,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 </style>
 </head>
 <body>
-<button class="back-btn" onclick="goBack()">←</button>
+<button class="back-btn" onclick="goHome()">←</button>
 <div class="container" id="app"></div>
 <script>
 const params=new URLSearchParams(window.location.search);
 const quizId=params.get('id')||'perfect-match';
 
-// Question banks - 36 each
+// Question banks - 36 questions each, random 12 selected
 const QB={
 'perfect-match':[
 {q:1,t:'When someone hurts you, what do you do?',o:['Confront directly','Write a letter','Pretend nothing','Talk to friend']},
@@ -64,7 +64,7 @@ const QB={
 {q:12,t:'Show love to family?',o:['Help with problems','Say I love you','Buy gifts','Spend time']},
 {q:13,t:'When sad, need...',o:['Someone to listen','Distract me','Solve it','Alone time']},
 {q:14,t:'Dream vacation?',o:['Paris trip','Solo backpacking','Adventure','Staycation']},
-{q:15,t:'Achieve something, you...',o:['Share social media','Tell friends','Keep private','Celebrate']},
+{q:15,t:'Achieve something, you...',o:['Share social media','Tell friends','Keep private','Party']},
 {q:16,t:'Sunday morning?',o:['Sleep late','Go run','Brunch with friends','Work on hobbies']},
 {q:17,t:'Meet someone new...',o:['Talk about self','Ask questions','Observe','Make jokes']},
 {q:18,t:'Text style?',o:['Long paragraphs','Short direct','Emojis','Voice messages']},
@@ -120,8 +120,8 @@ const QB={
 {q:30,t:'True love is...',o:['Feeling','Choice','Journey','Dream']},
 {q:31,t:'Believe in soulmates?',o:['One only','Multiple','No','Not sure']},
 {q:32,t:'Find the one...',o:['Know immediately','Take time','Others point out','Gradual']},
-{q:33,t:'Perfect love story?',o:['Friends to lovers','Enemies to lovers','First sight','Slow burn']},
-{q:34,t:'Destiny?',o:['Right timing','Connection','Choose daily','Complete you']},
+{q:33,t:'Perfect love story?',o:['Friends to lovers','Enemies to lovers','Love at first sight','Slow burn']},
+{q:34,t:'Destiny?',o:['Right timing','Undeniable connection','Choose daily','Complete you']},
 {q:35,t:'Immediate connection?',o:['Many times','Once/twice','Never','Don\'t remember']},
 {q:36,t:'First love was...',o:['Fairytale','Disaster','Learning','Still only']}
 ],
@@ -140,7 +140,7 @@ const QB={
 {q:12,t:'Motto?',o:['Live today','Knowledge','Love','Never give up']},
 {q:13,t:'When sad...',o:['Listen','Distract','Solve','Alone']},
 {q:14,t:'Vacation?',o:['Paris','Backpacking','Adventure','Staycation']},
-{q:15,t:'Achieve...',o:['Share','Friends','Private','Celebrate']},
+{q:15,t:'Achieve...',o:['Social','Friends','Private','Celebrate']},
 {q:16,t:'Sunday?',o:['Sleep','Run','Brunch','Hobbies']},
 {q:17,t:'Meet new...',o:['Talk','Ask','Observe','Jokes']},
 {q:18,t:'Text?',o:['Long','Short','Emojis','Voice']},
@@ -165,15 +165,7 @@ const QB={
 ]
 };
 
-// Results for each quiz
-const RS={
-'perfect-match':{A:{n:'Romeo',d:'The passionate romantic. You love deeply and intensely, never holding back your feelings.'},B:{n:'Mr. Darcy',d:'The proud but lovable. Your love is subtle but deep, showing care through actions.'},C:{n:'Jack',d:'The adventurous soulmate. You seek excitement and passion in relationships.'},D:{n:'Noah',d:'The devoted partner. Steady, loyal, and always there for your loved one.'}},
-'real-soulmate':{A:{n:'The Empath',d:'You connect deeply with others and value emotional intimacy above all.'},B:{n:'The Adventurer',d:'You need a partner who can keep up with your spontaneous spirit.'},C:{n:'The Guardian',d:'You are the steady rock that others can always count on.'},D:{n:'The Intellectual',d:'You seek a mind that matches yours in深度.'}},
-'movie-character':{A:{n:'The Hero',d:'Brave, determined, and always ready to save the day.'},B:{n:'The Villain',d:'Complex, mysterious, and misunderstood.'},C:{n:'The Sidekick',d:'Loyal, funny, and the best friend anyone could have.'},D:{n:'The Love Interest',d:'Romantic, passionate, and captivating.'}}
-};
-
-const results=RS[quizId]||RS['perfect-match'];
-
+// Get 12 random questions
 function getQ(id){
 const b=QB[id]||QB['perfect-match'];
 return [...b].sort(()=>Math.random()-.5).slice(0,12).map((x,i)=>({id:'q'+(i+1),t:x.t,o:x.o.map((t,s)=>({text:t,score:String.fromCharCode(65+s)}))}));
@@ -181,9 +173,18 @@ return [...b].sort(()=>Math.random()-.5).slice(0,12).map((x,i)=>({id:'q'+(i+1),t
 let questions=getQ(quizId);
 let currentQ=0,answers={};
 
+const results={
+A:{n:'Type A',d:'You are a passionate and direct person.'},
+B:{n:'Type B',d:'You are thoughtful and reserved.'},
+C:{n:'Type C',d:'You are balanced and adaptive.'},
+D:{n:'Type D',d:'You are spontaneous and fun-loving.'}
+};
+
 function rnd(min,max){return Math.floor(Math.random()*(max-min+1))+min}
-function goHome(){window.location.href='index.html';}
-function goBack(){window.location.href='quiz-detail.html?id='+quizId;}
+function goHome(){window.location.href='index.html'}
+function goQuiz(id){window.location.href='quiz.html?id='+id}
+
+function rndP(){return rnd(45,65)}
 
 function renQ(){
 const q=questions[currentQ];
@@ -204,18 +205,17 @@ function showR(){
 const sc={};
 Object.values(answers).forEach(s=>sc[s]=(sc[s]||0)+1);
 let top='A',mx=0;Object.entries(sc).forEach(([k,v])=>{if(v>mx){mx=v;top=k;}});
-const p1=rnd(45,65),p2=rnd(15,25),p3=rnd(10,20);
 const m=[
-{n:results[top].n,p:p1},
-{n:results['B'].n,p:p2},
-{n:results['C'].n,p:p3},
-{n:results['D'].n,p:100-p1-p2-p3}
+{n:results[top].n,p:rndP()},
+{n:results['B'].n,p:rndP()},
+{n:results['C'].n,p:rndP()},
+{n:results['D'].n,p:100-m[0].p-m[1].p-m[2].p}
 ].sort((a,b)=>b.p-a.p);
 
 document.getElementById('app').innerHTML=`
-<div class="result-card"><div class="result-title">Your result is</div><div class="result-name">${m[0].n}</div><div class="result-desc">${results[top].d}</div>
-<div class="match-list">${m.map(x=>`<div class="match-item"><div class="m-name">${x.n}</div><div class="match-bar"><div class="match-fill" style="width:${x.p}%"></div></div><div class="m-pct">${x.p}%</div></div>`).join('')}</div>
-<div class="share-btns"><button class="share-btn primary" onclick="shareR()">📤 Share</button><button class="share-btn secondary" onclick="goBack()">🔄 Try Again</button></div></div>`;
+<div class="result-card"><div class="result-title">Your result</div><div class="result-name">${m[0].n}</div><div class="result-desc">${results[top].d}</div>
+<div class="match-list">${m.map(x=>`<div class="match-item"><div class="match-name">${x.n}</div><div class="match-bar"><div class="match-fill" style="width:${x.p}%"></div></div><div class="match-percent">${x.p}%</div></div>`).join('')}</div>
+<div class="share-btns"><button class="share-btn primary" onclick="shareR()">📤 Share</button><button class="share-btn secondary" onclick="goQuiz('${quizId}')">🔄 Try Again</button></div></div>`;
 }
 
 function shareR(){
