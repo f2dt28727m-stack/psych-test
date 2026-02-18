@@ -114,24 +114,21 @@
             cursor: pointer;
         }
         
-        /* Cards */
+        /* Cards - 2 rows horizontal scroll */
         .card-list {
-            display: flex;
-            gap: 12px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 0 20px;
             overflow-x: auto;
-            padding: 0 20px 10px;
-            scrollbar-width: thin;
-            scrollbar-color: #333 #111;
+            scrollbar-width: none;
         }
-        .card-list::-webkit-scrollbar { height: 4px; }
-        .card-list::-webkit-scrollbar-track { background: #111; }
-        .card-list::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+        .card-list::-webkit-scrollbar { display: none; }
         
         .card {
-            min-width: 160px;
             background: #141414;
-            border-radius: 14px;
-            padding: 16px;
+            border-radius: 12px;
+            padding: 14px;
             cursor: pointer;
             transition: all 0.2s;
             border: 1px solid #222;
@@ -141,13 +138,17 @@
             transform: translateY(-2px);
         }
         .card-title {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         .card-meta {
-            font-size: 12px;
+            font-size: 11px;
             color: #555;
         }
         
