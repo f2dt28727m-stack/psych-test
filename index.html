@@ -87,7 +87,7 @@
         /* Main content */
         .main {
             padding-top: 120px;
-            padding-bottom: 80px;
+            padding-bottom: 20px;
             min-height: 100vh;
         }
         
@@ -114,16 +114,13 @@
             cursor: pointer;
         }
         
-        /* Cards - 2 rows horizontal scroll */
+        /* Cards - 2 columns like All tab */
         .card-list {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
             padding: 0 20px;
-            overflow-x: auto;
-            scrollbar-width: none;
         }
-        .card-list::-webkit-scrollbar { display: none; }
         
         .card {
             background: #141414;
@@ -234,17 +231,7 @@
         .search-result-item:active { background: #111; }
         
         /* Bottom nav */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 70px;
-            background: rgba(10,10,10,0.95);
-            backdrop-filter: blur(10px);
-            display: flex;
-            border-top: 1px solid #222;
-        }
+        .bottom-nav { display: none; }
         .nav-item {
             flex: 1;
             display: flex;
