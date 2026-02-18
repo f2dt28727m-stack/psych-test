@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Quizy</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            border-bottom: 1px solid #222;
+            z-index: 100;
+        }
+        .back-btn {
+            font-size: 20px;
+            cursor: pointer;
+            color: #fff;
+        }
+        .logo {
+            margin-left: 15px;
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Main */
+        .main {
+            padding-top: 80px;
+            padding-bottom: 40px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 30px 40px;
+        }
+        
+        /* Quiz Cover */
+        .quiz-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            margin-bottom: 30px;
+            border: 1px solid #333;
+        }
+        
+        .quiz-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .quiz-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .quiz-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        /* Stats */
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-num {
+            font-size: 20px;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+        }
+        
+        /* Action buttons */
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .start-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .start-btn:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Like/Dislike */
+        .vote-btns {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        
+        .vote-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+            font-size: 14px;
+        }
+        .vote-btn:active {
+            transform: scale(0.95);
+        }
+        .vote-btn .icon {
+            width: 50px;
+            height: 50px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+        .vote-btn.liked .icon {
+            border-color: #ff4757;
+            color: #ff4757;
+        }
+        .vote-btn.disliked .icon {
+            border-color: #7bed9f;
+            color: #7bed9f;
+        }
+        
+        /* Description */
+        .description {
+            max-width: 400px;
+            margin-top: 40px;
+            padding: 20px;
+            background: #141414;
+            border-radius: 16px;
+            color: #888;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="back-btn" onclick="goBack()">←</div>
+        <div class="logo" onclick="goHome()">Quizy</div>
+    </div>
+    
+    <!-- Main -->
+    <div class="main" id="app">
+        <div class="quiz-icon" id="quiz-icon">💕</div>
+        <div class="quiz-title" id="quiz-title">Loading...</div>
+        
+        <div class="quiz-meta">
+            <span>📊 <span id="quiz-category">-</span></span>
+            <span>👀 <span id="quiz-views">-</span> views</span>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-num" id="stat-likes">0</div>
+                <div class="stat-label">Likes</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num" id="stat-tests">0</div>
+                <div class="stat-label">Tests Taken</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num" id="stat-shares">0</div>
+                <div class="stat-label">Shares</div>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <button class="start-btn" onclick="startQuiz()">Start Now ▶</button>
+            
+            <div class="vote-btns">
+                <button class="vote-btn" id="like-btn" onclick="vote('like')">
+                    <div class="icon">👍</div>
+                    <span id="like-count">0</span>
+                </button>
+                <button class="vote-btn" id="dislike-btn" onclick="vote('dislike')">
+                    <div class="icon">👎</div>
+                    <span id="dislike-count">0</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="description" id="quiz-desc">
+            Take this quiz to discover your result! Answer 12 questions to find out which character matches your personality.
+        </div>
+    </div>
+
+    <script>
+        // Get quiz ID from URL
+        const params = new URLSearchParams(window.location.search);
+        const quizId = params.get('id') || 'perfect-match';
+        
+        // Quiz data
+        const quizzes = {
+            'perfect-match': { title: 'Who is your perfect match in life?', icon: '💕', category: 'Soulmate', views: 1200000, likes: 8500, tests: 980000, shares: 12000, desc: 'Find out who is your perfect match in life! This quiz will reveal your ideal partner based on your personality and preferences.' },
+            'real-soulmate': { title: 'Who is your real soulmate?', icon: '💘', category: 'Soulmate', views: 980000, likes: 7200, tests: 820000, shares: 9800, desc: 'Discover your true soulmate! Answer these questions to find out who truly matches your energy.' },
+            'ideal-boyfriend': { title: 'Who would be your ideal boyfriend?', icon: '👨', category: 'Soulmate', views: 850000, likes: 6800, tests: 720000, shares: 8500, desc: 'Dreaming of your ideal boyfriend? Take this quiz to find out which character type matches your heart.' },
+            'perfect-girlfriend': { title: 'Who would be your perfect girlfriend?', icon: '👩', category: 'Soulmate', views: 820000, likes: 6500, tests: 690000, shares: 8100, desc: 'Find your perfect girlfriend type! Discover who makes the ideal match for you.' },
+            'true-love-match': { title: 'Which character is your true love match?', icon: '❤️', category: 'Soulmate', views: 780000, likes: 6100, tests: 650000, shares: 7500, desc: 'Which movie or TV character is your true love match? Find out now!' },
+            'destiny-partner': { title: 'Who is your destiny partner?', icon: '✨', category: 'Soulmate', views: 650000, likes: 5200, tests: 540000, shares: 6200, desc: 'Believe in destiny? Find out who is written in your stars!' },
+            'movie-character': { title: 'Which movie character are you?', icon: '🎬', category: 'Which X', views: 920000, likes: 7800, tests: 780000, shares: 9200, desc: 'Which iconic movie character matches your personality? Take the quiz to find out!' },
+            'mythical-creature': { title: 'Which mythical creature are you?', icon: '🦄', category: 'Which X', views: 450000, likes: 3800, tests: 380000, shares: 4200, desc: 'Discover your inner mythical creature!' },
+            'kind-of-friend': { title: 'Which kind of friend are you?', icon: '👯', category: 'Which X', views: 380000, likes: 3200, tests: 320000, shares: 3500, desc: 'What kind of friend are you? Find out your friendship style!' },
+            'aesthetic-style': { title: 'Which aesthetic style are you?', icon: '🎨', category: 'Which X', views: 320000, likes: 2800, tests: 270000, shares: 2900, desc: 'Discover your aesthetic style!' },
+            'energy-archetype': { title: 'Which energy archetype are you?', icon: '⚡', category: 'Which X', views: 280000, likes: 2400, tests: 230000, shares: 2500, desc: 'What is your energy archetype?' },
+            'song-describes': { title: 'Which song describes you?', icon: '🎵', category: 'Which X', views: 250000, likes: 2100, tests: 200000, shares: 2200, desc: 'Which song best describes your life?' },
+            'color-personality': { title: 'Which color personality are you?', icon: '🌈', category: 'Which X', views: 220000, likes: 1900, tests: 180000, shares: 2000, desc: 'Discover your color personality!' },
+            'real-love-type': { title: "What's your real love type?", icon: '💏', category: 'Type', views: 420000, likes: 3600, tests: 350000, shares: 3800, desc: 'What is your real love type?' },
+            'true-aesthetic-type': { title: "What's your true aesthetic type?", icon: '💎', category: 'Type', views: 180000, likes: 1500, tests: 150000, shares: 1600, desc: 'Discover your true aesthetic!' },
+            'inner-energy-type': { title: "What's your inner energy type?", icon: '🔮', category: 'Type', views: 150000, likes: 1200, tests: 120000, shares: 1300, desc: 'What is your inner energy?' },
+            'friendship-type': { title: "What's your friendship type?", icon: '🤝', category: 'Type', views: 140000, likes: 1100, tests: 110000, shares: 1200, desc: 'What defines your friendships?' },
+            'dating-type': { title: "What's your dating type?", icon: '💑', category: 'Type', views: 130000, likes: 1000, tests: 100000, shares: 1100, desc: 'What is your dating style?' },
+            'vibe-type': { title: "What's your vibe type?", icon: '😎', category: 'Type', views: 120000, likes: 950, tests: 95000, shares: 1000, desc: 'What is your vibe?' },
+            'loyal-really': { title: 'How loyal are you really?', icon: '🎯', category: 'How', views: 210000, likes: 1800, tests: 170000, shares: 1900, desc: 'How loyal are you really?' },
+            'romantic-deep': { title: 'How romantic are you deep down?', icon: '🌹', category: 'How', views: 190000, likes: 1600, tests: 150000, shares: 1700, desc: 'How deep does your romance go?' },
+            'brave-in-love': { title: 'How brave are you in love?', icon: '🦁', category: 'How', views: 170000, likes: 1400, tests: 130000, shares: 1500, desc: 'Are you brave in love?' },
+            'toxic-personality': { title: 'How toxic is your personality?', icon: '☠️', category: 'How', views: 310000, likes: 2600, tests: 250000, shares: 2800, desc: 'How toxic is your personality?' },
+            'kind-heart': { title: 'How kind is your heart?', icon: '💖', category: 'How', views: 160000, likes: 1300, tests: 130000, shares: 1400, desc: 'How kind is your heart?' },
+            'confident-actually': { title: 'How confident are you actually?', icon: '💪', category: 'How', views: 145000, likes: 1200, tests: 115000, shares: 1300, desc: 'How confident are you?' },
+            'sensitive': { title: 'How sensitive are you?', icon: '🌸', category: 'How', views: 130000, likes: 1100, tests: 100000, shares: 1150, desc: 'How sensitive are you?' },
+            'hidden-superpower': { title: "What's your hidden superpower?", icon: '🦸', category: 'Secret', views: 520000, likes: 4400, tests: 430000, shares: 4700, desc: 'Discover your hidden superpower!' },
+            'secret-trauma': { title: "What's your secret inner trauma?", icon: '🩹', category: 'Secret', views: 380000, likes: 3200, tests: 310000, shares: 3400, desc: 'What is your secret inner trauma?' },
+            'hidden-talent': { title: "What's your hidden talent?", icon: '🌟', category: 'Secret', views: 350000, likes: 2900, tests: 280000, shares: 3100, desc: 'What hidden talent do you have?' },
+            'dark-side': { title: "What's your dark side?", icon: '🌑', category: 'Secret', views: 480000, likes: 4000, tests: 390000, shares: 4300, desc: 'What is your dark side?' },
+            'secret-desire': { title: "What's your secret desire?", icon: '🔥', category: 'Secret', views: 290000, likes: 2400, tests: 230000, shares: 2600, desc: 'What is your secret desire?' },
+            'hidden-fear': { title: "What's your hidden fear?", icon: '😱', category: 'Secret', views: 240000, likes: 2000, tests: 190000, shares: 2100, desc: 'What is your hidden fear?' },
+            'secret-strength': { title: "What's your secret strength?", icon: '💪', category: 'Secret', views: 200000, likes: 1700, tests: 160000, shares: 1800, desc: 'What is your secret strength?' },
+            'love-crisis': { title: 'What would you do in a love crisis?', icon: '💔', category: 'What If', views: 180000, likes: 1500, tests: 140000, shares: 1600, desc: 'How would you handle a love crisis?' },
+            'win-lottery': { title: 'What if you won the lottery?', icon: '💰', category: 'What If', views: 320000, likes: 2700, tests: 260000, shares: 2900, desc: 'What would you do if you won the lottery?' },
+            'dangerous-situation': { title: 'What in a dangerous situation?', icon: '⚠️', category: 'What If', views: 150000, likes: 1200, tests: 115000, shares: 1300, desc: 'What would you do in danger?' },
+            'for-dream': { title: 'What would you do for your dream?', icon: '🚀', category: 'What If', views: 140000, likes: 1100, tests: 105000, shares: 1200, desc: 'What would you sacrifice for your dream?' },
+            'meet-idol': { title: 'What if you met your idol?', icon: '⭐', category: 'What If', views: 120000, likes: 950, tests: 90000, shares: 1050, desc: 'How would you react meeting your idol?' },
+            'breakup': { title: 'What would you do in a breakup?', icon: '💢', category: 'What If', views: 280000, likes: 2300, tests: 220000, shares: 2500, desc: 'How do you handle breakups?' },
+            'pick-personality': { title: "Pick one, we'll guess your personality", icon: '🎯', category: 'Pick', views: 220000, likes: 1800, tests: 175000, shares: 1950, desc: 'Pick one to reveal your personality!' },
+            'choose-type': { title: "Choose one, reveal your real type", icon: '🎭', category: 'Pick', views: 180000, likes: 1500, tests: 140000, shares: 1600, desc: 'Choose to discover your type!' },
+            'pick-soulmate': { title: "Pick your favorite, find soulmate", icon: '💝', category: 'Pick', views: 160000, likes: 1300, tests: 125000, shares: 1400, desc: 'Pick to find your soulmate!' },
+            'choose-dark-side': { title: "Choose one, discover dark side", icon: '🌘', category: 'Pick', views: 210000, likes: 1700, tests: 165000, shares: 1850, desc: 'Choose to see your dark side!' },
+            'pick-picture': { title: "Pick a picture, know your future", icon: '🃏', category: 'Pick', views: 190000, likes: 1600, tests: 150000, shares: 1700, desc: 'Pick a picture to see your future!' },
+            'choose-true-self': { title: "Choose, see your true self", icon: '🪞', category: 'Pick', views: 140000, likes: 1150, tests: 108000, shares: 1250, desc: 'Choose to see your true self!' },
+            'future-love': { title: "What's your future love like?", icon: '🔮', category: 'Future', views: 450000, likes: 3800, tests: 370000, shares: 4000, desc: 'What does your future love look like?' },
+            'who-marry': { title: 'Who will you end up marrying?', icon: '💒', category: 'Future', views: 580000, likes: 4900, tests: 480000, shares: 5200, desc: 'Who will you marry?' },
+            'real-destiny': { title: "What's your real destiny?", icon: '📜', category: 'Future', views: 320000, likes: 2700, tests: 260000, shares: 2900, desc: 'What is your real destiny?' },
+            'future-hold': { title: 'What does your future hold?', icon: '🎁', category: 'Future', views: 280000, likes: 2300, tests: 220000, shares: 2500, desc: 'What does the future hold for you?' },
+            'meet-soulmate': { title: 'When will you meet soulmate?', icon: '⏰', category: 'Future', views: 490000, likes: 4100, tests: 400000, shares: 4400, desc: 'When will you meet your soulmate?' }
+        };
+        
+        const quiz = quizzes[quizId] || quizzes['perfect-match'];
+        
+        // Render
+        document.getElementById('quiz-icon').textContent = quiz.icon;
+        document.getElementById('quiz-title').textContent = quiz.title;
+        document.getElementById('quiz-category').textContent = quiz.category;
+        document.getElementById('quiz-views').textContent = (quiz.views / 10000).toFixed(1) + 'W';
+        document.getElementById('stat-likes').textContent = (quiz.likes / 1000).toFixed(1) + 'K';
+        document.getElementById('stat-tests').textContent = (quiz.tests / 10000).toFixed(1) + 'W';
+        document.getElementById('stat-shares').textContent = (quiz.shares / 1000).toFixed(1) + 'K';
+        document.getElementById('like-count').textContent = quiz.likes;
+        document.getElementById('dislike-count').textContent = Math.floor(quiz.likes * 0.1);
+        document.getElementById('quiz-desc').textContent = quiz.desc;
+        document.title = quiz.title + ' - Quizy';
+        
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+        
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+        
+        function startQuiz() {
+            window.location.href = 'quiz.html?id=' + quizId;
+        }
+        
+        let liked = false;
+        let disliked = false;
+        
+        function vote(type) {
+            if (type === 'like') {
+                if (liked) {
+                    document.getElementById('like-btn').classList.remove('liked');
+                    document.getElementById('like-count').textContent = parseInt(document.getElementById('like-count').textContent) - 1;
+                    liked = false;
+                } else {
+                    if (disliked) {
+                        document.getElementById('dislike-btn').classList.remove('disliked');
+                        document.getElementById('dislike-count').textContent = parseInt(document.getElementById('dislike-count').textContent) - 1;
+                        disliked = false;
+                    }
+                    document.getElementById('like-btn').classList.add('liked');
+                    document.getElementById('like-count').textContent = parseInt(document.getElementById('like-count').textContent) + 1;
+                    liked = true;
+                }
+            } else {
+                if (disliked) {
+                    document.getElementById('dislike-btn').classList.remove('disliked');
+                    document.getElementById('dislike-count').textContent = parseInt(document.getElementById('dislike-count').textContent) - 1;
+                    disliked = false;
+                } else {
+                    if (liked) {
+                        document.getElementById('like-btn').classList.remove('liked');
+                        document.getElementById('like-count').textContent = parseInt(document.getElementById('like-count').textContent) - 1;
+                        liked = false;
+                    }
+                    document.getElementById('dislike-btn').classList.add('disliked');
+                    document.getElementById('dislike-count').textContent = parseInt(document.getElementById('dislike-count').textContent) + 1;
+                    disliked = true;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
