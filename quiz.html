@@ -85,8 +85,18 @@
         }
         .option.selected {
             border-color: #00d4ff;
-            background: rgba(0,212,255,0.1);
+            background: rgba(0,212,255,0.15);
         }
+        
+        .back-question {
+            margin-top: 20px;
+            text-align: center;
+            color: #666;
+            cursor: pointer;
+            padding: 12px;
+            font-size: 14px;
+        }
+        .back-question:hover { color: #00d4ff; }
         
         /* Result */
         .result-card {
@@ -392,6 +402,7 @@
             const q = questions[currentQuestion];
             const app = document.getElementById('app');
             const progress = ((currentQuestion + 1) / questions.length) * 100;
+            const currentAnswer = answers[q.id] || '';
             
             app.innerHTML = `
                 <div class="progress-wrap">
@@ -406,9 +417,10 @@
                     <div class="question-text">${q.text}</div>
                     <div class="option-list">
                         ${q.options.map((opt, i) => `
-                            <div class="option" onclick="selectOption('${opt.score}')">${opt.text}</div>
+                            <div class="option ${currentAnswer === opt.score ? 'selected' : ''}" onclick="selectOption('${opt.score}')">${opt.text}</div>
                         `).join('')}
                     </div>
+                    ${currentQuestion > 0 ? `<div class="back-question" onclick="goBack()">← Previous Question</div>` : ''}
                 </div>
             `;
         }
@@ -421,6 +433,13 @@
                 renderQuestion();
             } else {
                 showResult();
+            }
+        }
+        
+        function goBack() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
             }
         }
         
