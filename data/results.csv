@@ -1,0 +1,75 @@
+theme_id,result_key,result_name,description,personality_type
+perfect-match,Romeo,Romeo,The passionate romantic,true_romantic
+perfect-match,MrDarcy,Mr. Darcy,The proud but lovable,true_logical
+perfect-match,Jack,Jack from Titanic,The adventurous lover,true_adventurous
+perfect-match,Noah,Noah from The Notebook,The devoted soulmate,true_devoted
+perfect-match,Christian,Christian Grey,The intense lover,true_intense
+perfect-match,Mark,Mark from The Notebook,The steady partner,true_steady
+real-soulmate,SoulmateA,Your Soulmate Type A,The emotional connector,emotional
+real-soulmate,SoulmateB,Your Soulmate Type B,The adventurous partner,adventurous
+real-soulmate,SoulmateC,Your Soulmate Type C,The steady rock,steady
+real-soulmate,SoulmateD,Your Soulmate Type D,The intellectual match,intellectual
+ideal-boyfriend,PrinceCharming,Prince Charming,The fairy tale boyfriend,romantic
+ideal-boyfriend,BadBoy,The Bad Boy,The dangerous but exciting,badboy
+ideal-boyfriend,BestFriend,Your Best Friend,The comfortable love,comfortable
+ideal-boyfriend,MrRight,Mr. Right,The perfect match,perfect
+perfect-girlfriend,Princess,The Princess,The sweet and loving,girly
+perfect-girlfriend,Queen,The Queen,The powerful partner,powerful
+perfect-girlfriend,Bestie,The Bestie,Your partner in crime,adventurous
+perfect-girlpartner,Soulmate,Your Soulmate,The one true love,true_love
+true-love-match,Hermione,Hermione,The smart and loyal,smart
+true-love-match,Jack,Jack,The adventurous soulmate,adventurous
+true-love-match,Ross,Ross,The loyal and steady,loyal
+true-love-match,Joey,Joey,The fun and supportive,fun
+destiny-partner,SoulmateA,Your Destiny A,The one you meet early,early
+destiny-partner,SoulmateB,Your Destiny B,The one you meet late,late
+destiny-partner,SoulmateC,Your Destiny C,The unexpected love,unexpected
+destiny-partner,SoulmateD,Your Destiny D,The childhood friend,childhood
+movie-character,Hero,The Hero,Brave and determined,hero
+movie-character,Villain,The Villain,Complex and mysterious,villain
+movie-character,Sidekick,The Sidekick,Loyal and funny,sidekick
+movie-character,LoveInterest,The Love Interest,Romantic and passionate,romantic
+movie-character,ComicRelief,The Comic Relief,Funny and lighthearted,funny
+movie-character,Mentor,The Mentor,Wise and guiding,wise
+mythical-creature,Dragon,Dragon,Powerful and fierce,powerful
+mythical-creature,Unicorn,Unicorn,Pure and magical,magical
+mythical-creature,Phoenix,Phoenix,Rising from ashes,reborn
+mythical-creature,Mermaid,Mermaid,Mysterious and free,free
+mythical-creature,Werewolf,Werewolf,Loyal but wild,wild
+mythical-creature,Vampire,Vampire,Timeless and intense,intense
+kind-of-friend,TheLeader,The Leader,Always takes charge,leader
+kind-of-friend,TheHeart,The Heart,Emotional support,heart
+kind-of-friend,TheFunOne,The Fun One,Brings laughter,fun
+kind-of-friend,TheListener,The Listener,Always there to listen,listener
+kind-of-friend,ThePlanner,The Planner,Organized and prepared,planner
+kind-of-friend,TheAdvocate,The Advocate,Fights for friends,advocate
+aesthetic-style,Cottagecore,Cottagecore,Soft and romantic,soft
+aesthetic-style,DarkAcademia,Dark Academia,Intellectual and mysterious,mysterious
+aesthetic-style,Normcore,Normcore,Simple and comfortable,simple
+aesthetic-style,Y2K,Y2K,Bold and retro,bold
+aesthetic-style,Indie,Indie,Alternative and creative,creative
+aesthetic-style,Minimalist,Minimalist,Clean and simple,clean
+energy-archetype,Fire,Fire,Energetic and passionate,energetic
+energy-archetype,Water,Water,Emotional and flowing,emotional
+energy-archetype,Earth,Earth,Stable and grounded,stable
+energy-archetype,Air,Air,Free and creative,creative
+energy-archetype,Dark,Dark,Mysterious and deep,deep
+energy-archetype,Light,Light,Bright and positive,positive
+song-describes,PopStar,Pop Song,Upbeat and mainstream,upbeat
+song-describes,RockStar,Rock Song,Edgy and passionate,edgy
+song-describes,IndieSong,Indie Song,Alternative and soulful,soulful
+song-describes,RnB,R&B,Smooth and emotional,smooth
+song-describes,Classical,Classical,Timeless and elegant,elegant
+song-describes,HipHop,Hip Hop,Urban and rhythmic,urban
+color-personality,Red,Red,Bold and passionate,bold
+color-personality,Blue,Blue,Calm and wise,calm
+color-personality,Green,Green,Nature-loving and balanced,nature
+color-personality,Yellow,Yellow,Happy and energetic,energetic
+color-personality,Purple,Purple,Creative and mystical,creative
+color-personality,Pink,Pink,Soft and loving,soft
+real-love-type,ThePassionate,The Passionate,All about chemistry,passionate
+real-love-type,TheSteady,The Steady,Looking for commitment,steady
+real-love-type,TheExplorer,The Explorer,Adventure in love,adventure
+real-love-type,TheHealer,The Healer,Emotional connection,emotional
+real-love-type,TheIntellectual,The Intellectual,Mind matters most,mind
+real-love-type,TheFreeSpirit,The Free Spirit,No labels please,free

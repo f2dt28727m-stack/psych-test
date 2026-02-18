@@ -1,0 +1,85 @@
+theme_id,question_id,question_text,option_a,option_b,option_c,option_d
+perfect-match,q1,When someone hurts you what do you do?,Confront them directly,Write them a letter,Pretend it didn't happen,Talk to a friend about it
+perfect-match,q2,How do you spend your ideal Friday night?,Go to a party,Stay home reading,Go on a date,Hang out with close friends
+perfect-match,q3,When you love someone what do you do?,Show it through actions,Tell them every day,Write them poems,Plan future together
+perfect-match,q4,Your date is late for 30 minutes you...,Leave immediately,Wait and get angry,Text them calmly,Pretend you're also late
+perfect-match,q5,What's your move when you first meet someone you like?,Walk up and introduce yourself,Make eye contact and smile,Wait for them to approach you,Find mutual friends to introduce
+perfect-match,q6,When you argue with your partner you...,Yell and get it out,Stay silent and cold,Try to compromise,Walk away and think
+perfect-match,q7,What do you look for in a partner first?,Ambition,Intelligence,Kindness,Good looks
+perfect-match,q8,How do you handle a breakup?,Delete everything and move on,Cry and mourn,Stay friends,Find someone new immediately
+perfect-match,q9,When your partner needs space you...,Ask why immediately,Give them full space,Get anxious and insecure,Use the time for yourself too
+perfect-match,q10,What's your idea of a perfect date?,Adventure and excitement,Quiet dinner for two,Movie and popcorn at home,Fun activities with friends
+perfect-match,q11,When you suspect your partner is lying you...,Confront them right away,Investigate secretly,Pretend not to notice,Trust but verify
+perfect-match,q12,How do you show love to your family?,Help them with problems,Say I love you often,Buy them gifts,Spend time with them
+real-soulmate,q1,When you're sad what do you need?,Someone to listen,Someone to distract me,Someone to solve it,Alone time
+real-soulmate,q2,Your dream vacation is...,Romantic Paris trip,Solo backpacking,Adventure expedition,Staycation at home
+real-soulmate,q3,When you achieve something you...,Share it on social media,Tell close friends,Keep it private,Celebrate with party
+real-soulmate,q4,What do you do on a Sunday morning?,Sleep until noon,Go for a run,Brunch with friends,Work on hobbies
+real-soulmate,q5,When you meet someone new you...,Talk a lot about yourself,Ask many questions,Stay quiet and observe,Make jokes
+real-soulmate,q6,Your text message style is...,Long paragraphs,Short and direct,Emojis and stickers,Voice messages
+real-soulmate,q7,When you're in love you...,Fall hard and fast,Take it slow,Keep it secret,Show it openly
+real-soulmate,q8,What makes you laugh the most?,Dad jokes,Sarcasm,Physical comedy,Dark humor
+real-soulmate,q9,When stressed you...,Eat junk food,Exercise,Shop online,Meditate
+real-soulmate,q10,Your friends come to you for...,Honest advice,Emotional support,Fun and entertainment,Practical help
+real-soulmate,q11,What do you do when alone?,Watch TV,Read books,Create art,Think about life
+real-soulmate,q12,Your biggest fear is...,Being alone,Failure,Rejection,Death
+ideal-boyfriend,q1,He forgot your anniversary you...,Get really angry,Tell him calmly,Pretend you forgot too,Plan a surprise to make him remember
+ideal-boyfriend,q2,He spends too much time gaming you...,Join him and play together,Complain about it,Ignore it,Set gaming rules together
+ideal-boyfriend,q3,He meets your parents for the first time you want him to...,Be funny and charming,Be quiet and respectful,Show off his achievements,Be himself
+ideal-boyfriend,q4,He gets a job offer in another city you...,Tell him to take it,Ask him to turn it down,Suggest long distance,Look for job there too
+ideal-boyfriend,q5,He texts you during work you...,Reply immediately,Reply during break,Ignore until after work,Get annoyed
+ideal-boyfriend,q6,He makes a mistake you...,Forgive immediately,Give him a lecture,Silent treatment,Help him fix it
+ideal-boyfriend,q7,Your ideal date night is...,Fancy restaurant,Movie at home,Cooking together,Trying new restaurant
+ideal-boyfriend,q8,He doesn't want to meet your friends you...,Force him to,Accept it,Meet his friends instead,Break up
+ideal-boyfriend,q9,He looks at another person you...,Make a scene,Ignore it,Ask who they were,Look at someone else too
+ideal-boyfriend,q10,He wants to go out with his friends you...,Say go have fun,Ask to come along,Get upset,Plan your own night
+ideal-boyfriend,q11,He cries in front of you you...,Hug him tightly,Ask what's wrong,Feel uncomfortable,Cry with him
+ideal-boyfriend,q12,What matters most in a boyfriend?,Physical appearance,Financial stability,Emotional connection,Shared values
+perfect-girlfriend,q1,She takes 2 hours to get ready you...,Wait patiently,Complain about it,Help her get ready,Go ahead without her
+perfect-girlfriend,q2,She is on her phone during date you...,Take her phone away,Ignore it,Ask her to put it down,Get on your phone too
+perfect-girlfriend,q3,She wants to try something new you...,Try it enthusiastically,Say no,Research it first,Feel awkward
+perfect-girlfriend,q4,She is jealous of your ex you...,Delete ex's contact,Explain nothing happened,Get angry at her jealousy,Reassure her gently
+perfect-girlfriend,q5,She cries during a movie you...,Hold her hand,Pretend not to notice,Laugh at her,Cry too
+perfect-girlfriend,q6,She doesn't like your best friend you...,Choose your friend,Choose your girlfriend,Try to make them get along,Stop being friends with both
+perfect-girlfriend,q7,She spends too much on shopping you...,Give her your credit card,Argue about money,Help her budget,Say nothing
+perfect-girlfriend,q8,She wants to meet your mom you...,Plan a dinner,Say not ready yet,Say no,Ask mom first
+perfect-girlfriend,q9,She is mad at you for no reason you...,Ask what's wrong,Get mad back,Give her space,Apologize anyway
+perfect-girlfriend,q10,She gains weight she...,Says she's fat now,Eats salad for a week,Doesn't care,Work out with her
+perfect-girlfriend,q11,She insults your cooking you...,Cook more next time,Get offended,Order takeout,Ask how to improve
+perfect-girlfriend,q12,Your ideal girlfriend is...,Sweet and supportive,Smart and witty,Independent and strong,Fun and adventurous
+true-love-match,q1,When you love someone you...,Fight for them no matter what,Wait for them to make the first move,Show love through actions,Tell them every day
+true-love-match,q2,Your type is someone who...,Makes you laugh,Understands your silence,Challenges you intellectually,Protects you always
+true-love-match,q3,When you see your crush you...,Run to them,Pretend not to see them,Smile from afar,Walk over confidently
+true-love-match,q4,You fall in love when...,They make you laugh,They understand you,They challenge you,They show loyalty
+true-love-match,q5,Your love language is...,Physical touch,Quality time,Words of affirmation,Acts of service
+true-love-match,q6,When you get jealous you...,Show it openly,Hide it inside,Act cool,Ask them directly
+true-love-match,q7,You want a relationship where...,There's passion and drama,There's peace and stability,There's mutual growth,There's excitement and adventure
+true-love-match,q8,When your partner is sad you...,Try to fix their problems,Just listen,Make them laugh,Hug them silently
+true-love-match,q9,Your perfect date is...,Candlelit dinner,Road trip,Stay in and watch movies,Adventure activity
+true-love-match,q10,When you want to impress someone you...,Dress up nicely,Make them laugh,Show off your knowledge,Be yourself
+true-love-match,q11,The one gets your heart by...,Making you feel safe,Making you feel excited,Understanding you deeply,Challenging you
+true-love-match,q12,Love for you is...,A feeling you fall into,A choice you make daily,A journey you take together,A dream come true
+destiny-partner,q1,Do you believe in destiny?,Yes completely,No we make our own fate,Maybe sometimes,I don't know
+destiny-partner,q2,When you meet the one you know because...,Your heart races,It just feels right,You feel calm and at peace,Everything makes sense
+destiny-partner,q3,Your first love was...,A fairytale,A disaster,A learning experience,Still your only love
+destiny-partner,q4,In relationships you look for...,Instant chemistry,Long-term compatibility,Mutual respect,Passion and fire
+destiny-partner,q5,Have you ever felt immediate connection with a stranger?,Yes many times,Once or twice,No never,I don't remember
+destiny-partner,q6,When you think about your future partner you see...,Someone who makes you laugh,Someone who challenges you,Someone who accepts you,Someone who matches your energy
+destiny-partner,q7,Your love life has been...,One amazing story after another,A series of disasters,Pretty normal,Waiting for the right person
+destiny-partner,q8,Do you believe in soulmates?,Yes there's only one for everyone,Yes but we can have multiple,No it's just a concept,Maybe I'm not sure
+destiny-partner,q9,When you find the one you'll...,Know immediately,Take your time to realize,Let others point it out,Feel it gradually
+destiny-partner,q10,The perfect love story for you is...,Friends to lovers,Enemies to lovers,Love at first sight,Slow burn romance
+destiny-partner,q11,What makes someone your destiny?,The timing is right,The connection is undeniable,You both choose each other daily,They complete you
+destiny-partner,q12,Will you find your destiny partner?,Already have,Definitely will,Probably not,I don't care
+movie-character,q1,When you face a problem you...,Face it head on,Think of a clever solution,Ask friends for help,Avoid it until it goes away
+movie-character,q2,Your friends describe you as...,The brave leader,The funny one,The smart one,The mysterious one
+movie-character,q3,If you could have one superpower you'd choose...,Super strength,Invisibility,Mind reading,Time travel
+movie-character,q4,In a group project you...,Take charge and delegate,Do all the work yourself,Let others lead,Make sure everyone gets along
+movie-character,q5,When someone insults you you...,Insult them back,Ignore them,Think of a comeback later,Cry in private
+movie-character,q6,Your ideal weekend is...,Party with friends,Movie marathon at home,Learning something new,Adventure outdoors
+movie-character,q7,When you're in danger you...,Fight back,Look for escape route,Call for help,Freeze
+movie-character,q8,What do you value most?,Loyalty,Honesty,Freedom,Love
+movie-character,q9,Your biggest strength is...,Courage,Intelligence,Compassion,Creativity
+movie-character,q10,When you're angry you...,Yell and shout,Stay quiet and boil inside,Walk away,Break something
+movie-character,q11,What's your biggest flaw?,Being too blunt,Being too passive,Caring too much,Being too ambitious
+movie-character,q12,Your life motto is...,Live like there's no tomorrow,Knowledge is power,To love and be loved,Never give up
