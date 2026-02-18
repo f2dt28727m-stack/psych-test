@@ -1,0 +1,73 @@
+{
+  "categories": [
+    {"id": "hot", "name": "🔥 全球顶流", "name_en": "Global Hits", "icon": "🔥", "sort_order": 1},
+    {"id": "psychology", "name": "🧠 心理人格", "name_en": "Psychology", "icon": "🧠", "sort_order": 2},
+    {"id": "entertainment", "name": "🎮 趣味娱乐", "name_en": "Entertainment", "icon": "🎮", "sort_order": 3}
+  ],
+  "themes": [
+    {
+      "id": "mbti",
+      "category_id": "hot",
+      "personality_system": "MBTI",
+      "title": "MBTI 16型人格测试",
+      "description": "测测你是哪种MBTI人格",
+      "cover_image": "",
+      "is_hot": true,
+      "hot_rank": 1,
+      "characters": []
+    },
+    {
+      "id": "harrypotter",
+      "category_id": "entertainment",
+      "personality_system": "MBTI",
+      "title": "你是哈利波特里的谁？",
+      "description": "霍格沃茨魔法学院人格测试",
+      "cover_image": "",
+      "is_hot": true,
+      "hot_rank": 2,
+      "characters": [
+        {"char_key": "hermione", "name_cn": "赫敏", "name_en": "Hermione", "personality_code": "INTJ"},
+        {"char_key": "harry", "name_cn": "哈利", "name_en": "Harry", "personality_code": "ENFJ"},
+        {"char_key": "ron", "name_cn": "罗恩", "name_en": "Ron", "personality_code": "ESFJ"},
+        {"char_key": "draco", "name_cn": "德拉科", "name_en": "Draco", "personality_code": "ISTP"},
+        {"char_key": "dumbledore", "name_cn": "邓布利多", "name_en": "Dumbledore", "personality_code": "INFJ"},
+        {"char_key": "snape", "name_cn": "斯内普", "name_en": "Snape", "personality_code": "INTP"}
+      ]
+    },
+    {
+      "id": "zhenhuan",
+      "category_id": "entertainment",
+      "personality_system": "MBTI",
+      "title": "甄嬛传人格测试",
+      "description": "你在后宫是什么段位？",
+      "cover_image": "",
+      "is_hot": true,
+      "hot_rank": 3,
+      "characters": [
+        {"char_key": "zhenhuan", "name_cn": "甄嬛", "name_en": "Zhen Huan", "personality_code": "INFJ"},
+        {"char_key": "hua", "name_cn": "华妃", "name_en": "Consort Hua", "personality_code": "ESTJ"},
+        {"char_key": "jia", "name_cn": "皇后", "name_en": "Empress Jia", "personality_code": "ENTJ"},
+        {"char_key": "anling", "name_cn": "安陵容", "name_en": "An Lingrong", "personality_code": "INFP"},
+        {"char_key": "xiashi", "name_cn": "夏冬春", "name_en": "Xia Dongchun", "personality_code": "ESFP"}
+      ]
+    },
+    {
+      "id": "marvel",
+      "category_id": "entertainment",
+      "personality_system": "MBTI",
+      "title": "漫威超级英雄人格",
+      "description": "你是漫威宇宙里的谁？",
+      "cover_image": "",
+      "is_hot": false,
+      "hot_rank": null,
+      "characters": [
+        {"char_key": "ironman", "name_cn": "钢铁侠", "name_en": "Iron Man", "personality_code": "ENTP"},
+        {"char_key": "captain", "name_cn": "美国队长", "name_en": "Captain America", "personality_code": "ISFJ"},
+        {"char_key": "thor", "name_cn": "雷神", "name_en": "Thor", "personality_code": "ESFJ"},
+        {"char_key": "hulk", "name_cn": "绿巨人", "name_en": "Hulk", "personality_code": "ISTP"},
+        {"char_key": "spider", "name_cn": "蜘蛛侠", "name_en": "Spider-Man", "personality_code": "ENFP"},
+        {"char_key": "loki", "name_cn": "洛基", "name_en": "Loki", "personality_code": "INTP"}
+      ]
+    }
+  ]
+}

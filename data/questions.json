@@ -1,0 +1,110 @@
+{
+  "question_sets": [
+    {
+      "theme_id": "harrypotter",
+      "title": "霍格沃茨学院测试",
+      "description": "测测你在魔法世界的角色",
+      "is_default": true,
+      "questions": [
+        {
+          "id": "q1",
+          "content": "面对困难时，你会选择？",
+          "options": [
+            {"text": "制定详细计划一步步解决", "scores": {"INTJ": 3, "ISTJ": 3, "ESTJ": 2}},
+            {"text": "寻求朋友们的帮助", "scores": {"ESFJ": 3, "ENFJ": 2, "ENFP": 2}},
+            {"text": "凭直觉冲动去做", "scores": {"ESTP": 3, "ESFP": 3, "ENTP": 2}},
+            {"text": "先冷静分析情况", "scores": {"INTP": 3, "INFJ": 2, "INFP": 2}}
+          ]
+        },
+        {
+          "id": "q2",
+          "content": "你更喜欢哪种学习方式？",
+          "options": [
+            {"text": "跟着老师按部就班", "scores": {"ISFJ": 3, "ESFJ": 3, "ISTJ": 2}},
+            {"text": "自己看书研究原理", "scores": {"INTP": 3, "INTJ": 3, "INFJ": 2}},
+            {"text": "实践出真知，边做边学", "scores": {"ESTP": 3, "ESFP": 3, "ENTP": 2}},
+            {"text": "和同学讨论交流", "scores": {"ENFP": 3, "ENFJ": 2, "ENTJ": 2}}
+          ]
+        },
+        {
+          "id": "q3",
+          "content": "在团队中，你通常扮演什么角色？",
+          "options": [
+            {"text": "领导者，制定方向和规则", "scores": {"ENTJ": 3, "ESTJ": 3, "ENFJ": 2}},
+            {"text": "军师，提供策略和建议", "scores": {"INTJ": 3, "INTP": 3, "INFJ": 2}},
+            {"text": "和事佬，维持团队和谐", "scores": {"ESFJ": 3, "ISFJ": 3, "ENFP": 2}},
+            {"text": "执行者，冲在最前面", "scores": {"ESTP": 3, "ESFP": 3, "ISTP": 2}}
+          ]
+        },
+        {
+          "id": "q4",
+          "content": "你如何看待规则和权威？",
+          "options": [
+            {"text": "规则是用来遵守的", "scores": {"ISTJ": 3, "ESFJ": 3, "ESTJ": 2}},
+            {"text": "规则是参考，可以灵活变通", "scores": {"ENFP": 3, "ENTP": 3, "INFP": 2}},
+            {"text": "规则是为了打破而存在的", "scores": {"ENTP": 3, "ESTP": 3, "INTP": 2}},
+            {"text": "看情况，合理的遵守不合理的反对", "scores": {"INTJ": 3, "INFJ": 3, "ENFJ": 2}}
+          ]
+        },
+        {
+          "id": "q5",
+          "content": "你的朋友遇到烦恼向你倾诉，你会？",
+          "options": [
+            {"text": "给出具体的解决方案", "scores": {"ENTJ": 3, "ESTJ": 3, "INTJ": 2}},
+            {"text": "耐心倾听，陪伴在旁", "scores": {"ISFJ": 3, "ESFJ": 3, "INFJ": 2}},
+            {"text": "用幽默逗他开心", "scores": {"ESFP": 3, "ENFP": 3, "ESTP": 2}},
+            {"text": "分享自己的类似经历", "scores": {"INFP": 3, "ENFP": 3, "INTP": 2}}
+          ]
+        },
+        {
+          "id": "q6",
+          "content": "你更喜欢什么样的未来？",
+          "options": [
+            {"text": "稳定、可预测的生活", "scores": {"ISFJ": 3, "ISTJ": 3, "ESFJ": 2}},
+            {"text": "充满挑战和机遇的冒险", "scores": {"ENTP": 3, "ESTP": 3, "ENTJ": 2}},
+            {"text": "有意义，帮助他人的事业", "scores": {"ENFJ": 3, "INFJ": 3, "ESFJ": 2}},
+            {"text": "自由独立，按自己的节奏生活", "scores": {"INTP": 3, "INTJ": 3, "INFP": 2}}
+          ]
+        }
+      ]
+    },
+    {
+      "theme_id": "zhenhuan",
+      "title": "后宫生存指南",
+      "description": "测测你在后宫是什么段位",
+      "is_default": true,
+      "questions": [
+        {
+          "id": "q1",
+          "content": "有人背后说你坏话，你会？",
+          "options": [
+            {"text": "当面揭穿，不惯着", "scores": {"ESTJ": 3, "ENTJ": 3, "ESTP": 2}},
+            {"text": "记在心里，找机会还击", "scores": {"INTJ": 3, "INFJ": 3, "INTP": 2}},
+            {"text": "假装不知道，暗中观察", "scores": {"ISFJ": 3, "ISTP": 3, "INFP": 2}},
+            {"text": "找朋友倾诉发泄", "scores": {"ENFP": 3, "ESFP": 3, "ENFJ": 2}}
+          ]
+        },
+        {
+          "id": "q2",
+          "content": "面对竞争，你会？",
+          "options": [
+            {"text": "正面刚，谁怕谁", "scores": {"ESTJ": 3, "ESTP": 3, "ENTJ": 2}},
+            {"text": "暗中布局，等机会", "scores": {"INTJ": 3, "INTP": 3, "INFJ": 2}},
+            {"text": "拉帮结派，搞定关系", "scores": {"ENFJ": 3, "ESFJ": 3, "ENFP": 2}},
+            {"text": "退出竞争，保平安", "scores": {"ISFJ": 3, "INFP": 3, "ISFP": 2}}
+          ]
+        },
+        {
+          "id": "q3",
+          "content": "你更喜欢哪种相处方式？",
+          "options": [
+            {"text": "直来直去，有话说话", "scores": {"ESTJ": 3, "ESTP": 3, "ENTJ": 2}},
+            {"text": "温和细致，照顾感受", "scores": {"ISFJ": 3, "ESFJ": 3, "INFJ": 2}},
+            {"text": "若即若离，保持神秘", "scores": {"INTP": 3, "INTJ": 3, "INFJ": 2}},
+            {"text": "热情主动，打成一片", "scores": {"ENFJ": 3, "ENFP": 3, "ESFP": 2}}
+          ]
+        }
+      ]
+    }
+  ]
+}

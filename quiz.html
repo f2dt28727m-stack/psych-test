@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心理测试</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .progress-bar {
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            transition: width 0.3s ease;
+        }
+        .question-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .question-num {
+            color: #00d4ff;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .question-text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .option {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 16px 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+        }
+        .option:hover {
+            border-color: #00d4ff;
+            background: rgba(0,212,255,0.1);
+        }
+        .option.selected {
+            border-color: #00d4ff;
+            background: rgba(0,212,255,0.2);
+        }
+        .result-card {
+            text-align: center;
+            padding: 40px;
+        }
+        .result-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .result-subtitle {
+            color: #8892b0;
+            margin-bottom: 30px;
+        }
+        .result-list {
+            text-align: left;
+            margin: 30px 0;
+        }
+        .result-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .result-name {
+            width: 80px;
+            font-weight: 500;
+        }
+        .result-bar {
+            flex: 1;
+            height: 24px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 0 12px;
+        }
+        .result-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            border-radius: 12px;
+            transition: width 0.5s ease;
+        }
+        .result-percent {
+            width: 50px;
+            text-align: right;
+            color: #00d4ff;
+            font-weight: 600;
+        }
+        .btn {
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            border: none;
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        .back-link {
+            display: inline-block;
+            color: #8892b0;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            color: #00d4ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回首页</a>
+        
+        <div id="app"></div>
+    </div>
+
+    <script>
+        // 主题数据
+        const themesData = {
+            harrypotter: {
+                title: "你是哈利波特里的谁？",
+                characters: [
+                    { char_key: "hermione", name_cn: "赫敏", personality_code: "INTJ" },
+                    { char_key: "harry", name_cn: "哈利", personality_code: "ENFJ" },
+                    { char_key: "ron", name_cn: "罗恩", personality_code: "ESFJ" },
+                    { char_key: "draco", name_cn: "德拉科", personality_code: "ISTP" },
+                    { char_key: "dumbledore", name_cn: "邓布利多", personality_code: "INFJ" },
+                    { char_key: "snape", name_cn: "斯内普", personality_code: "INTP" }
+                ]
+            },
+            zhenhuan: {
+                title: "甄嬛传人格测试",
+                characters: [
+                    { char_key: "zhenhuan", name_cn: "甄嬛", personality_code: "INFJ" },
+                    { char_key: "hua", name_cn: "华妃", personality_code: "ESTJ" },
+                    { char_key: "jia", name_cn: "皇后", personality_code: "ENTJ" },
+                    { char_key: "anling", name_cn: "安陵容", personality_code: "INFP" },
+                    { char_key: "xiashi", name_cn: "夏冬春", personality_code: "ESFP" }
+                ]
+            }
+        };
+
+        // 题目数据
+        const questionsData = {
+            harrypotter: [
+                {
+                    id: "q1",
+                    content: "面对困难时，你会选择？",
+                    options: [
+                        { text: "制定详细计划一步步解决", scores: { "INTJ": 3, "ISTJ": 3, "ESTJ": 2 } },
+                        { text: "寻求朋友们的帮助", scores: { "ESFJ": 3, "ENFJ": 2, "ENFP": 2 } },
+                        { text: "凭直觉冲动去做", scores: { "ESTP": 3, "ESFP": 3, "ENTP": 2 } },
+                        { text: "先冷静分析情况", scores: { "INTP": 3, "INFJ": 2, "INFP": 2 } }
+                    ]
+                },
+                {
+                    id: "q2",
+                    content: "你更喜欢哪种学习方式？",
+                    options: [
+                        { text: "跟着老师按部就班", scores: { "ISFJ": 3, "ESFJ": 3, "ISTJ": 2 } },
+                        { text: "自己看书研究原理", scores: { "INTP": 3, "INTJ": 3, "INFJ": 2 } },
+                        { text: "实践出真知，边做边学", scores: { "ESTP": 3, "ESFP": 3, "ENTP": 2 } },
+                        { text: "和同学讨论交流", scores: { "ENFP": 3, "ENFJ": 2, "ENTJ": 2 } }
+                    ]
+                },
+                {
+                    id: "q3",
+                    content: "在团队中，你通常扮演什么角色？",
+                    options: [
+                        { text: "领导者，制定方向和规则", scores: { "ENTJ": 3, "ESTJ": 3, "ENFJ": 2 } },
+                        { text: "军师，提供策略和建议", scores: { "INTJ": 3, "INTP": 3, "INFJ": 2 } },
+                        { text: "和事佬，维持团队和谐", scores: { "ESFJ": 3, "ISFJ": 3, "ENFP": 2 } },
+                        { text: "执行者，冲在最前面", scores: { "ESTP": 3, "ESFP": 3, "ISTP": 2 } }
+                    ]
+                },
+                {
+                    id: "q4",
+                    content: "你如何看待规则和权威？",
+                    options: [
+                        { text: "规则是用来遵守的", scores: { "ISTJ": 3, "ESFJ": 3, "ESTJ": 2 } },
+                        { text: "规则是参考，可以灵活变通", scores: { "ENFP": 3, "ENTP": 3, "INFP": 2 } },
+                        { text: "规则是为了打破而存在的", scores: { "ENTP": 3, "ESTP": 3, "INTP": 2 } },
+                        { text: "看情况，合理的遵守不合理的反对", scores: { "INTJ": 3, "INFJ": 3, "ENFJ": 2 } }
+                    ]
+                },
+                {
+                    id: "q5",
+                    content: "你的朋友遇到烦恼向你倾诉，你会？",
+                    options: [
+                        { text: "给出具体的解决方案", scores: { "ENTJ": 3, "ESTJ": 3, "INTJ": 2 } },
+                        { text: "耐心倾听，陪伴在旁", scores: { "ISFJ": 3, "ESFJ": 3, "INFJ": 2 } },
+                        { text: "用幽默逗他开心", scores: { "ESFP": 3, "ENFP": 3, "ESTP": 2 } },
+                        { text: "分享自己的类似经历", scores: { "INFP": 3, "ENFP": 3, "INTP": 2 } }
+                    ]
+                },
+                {
+                    id: "q6",
+                    content: "你更喜欢什么样的未来？",
+                    options: [
+                        { text: "稳定、可预测的生活", scores: { "ISFJ": 3, "ISTJ": 3, "ESFJ": 2 } },
+                        { text: "充满挑战和机遇的冒险", scores: { "ENTP": 3, "ESTP": 3, "ENTJ": 2 } },
+                        { text: "有意义，帮助他人的事业", scores: { "ENFJ": 3, "INFJ": 3, "ESFJ": 2 } },
+                        { text: "自由独立，按自己的节奏生活", scores: { "INTP": 3, "INTJ": 3, "INFP": 2 } }
+                    ]
+                }
+            ],
+            zhenhuan: [
+                {
+                    id: "q1",
+                    content: "有人背后说你坏话，你会？",
+                    options: [
+                        { text: "当面揭穿，不惯着", scores: { "ESTJ": 3, "ENTJ": 3, "ESTP": 2 } },
+                        { text: "记在心里，找机会还击", scores: { "INTJ": 3, "INFJ": 3, "INTP": 2 } },
+                        { text: "假装不知道，暗中观察", scores: { "ISFJ": 3, "ISTP": 3, "INFP": 2 } },
+                        { text: "找朋友倾诉发泄", scores: { "ENFP": 3, "ESFP": 3, "ENFJ": 2 } }
+                    ]
+                },
+                {
+                    id: "q2",
+                    content: "面对竞争，你会？",
+                    options: [
+                        { text: "正面刚，谁怕谁", scores: { "ESTJ": 3, "ESTP": 3, "ENTJ": 2 } },
+                        { text: "暗中布局，等机会", scores: { "INTJ": 3, "INTP": 3, "INFJ": 2 } },
+                        { text: "拉帮结派，搞定关系", scores: { "ENFJ": 3, "ESFJ": 3, "ENFP": 2 } },
+                        { text: "退出竞争，保平安", scores: { "ISFJ": 3, "INFP": 3, "ISFP": 2 } }
+                    ]
+                },
+                {
+                    id: "q3",
+                    content: "你更喜欢哪种相处方式？",
+                    options: [
+                        { text: "直来直去，有话说话", scores: { "ESTJ": 3, "ESTP": 3, "ENTJ": 2 } },
+                        { text: "温和细致，照顾感受", scores: { "ISFJ": 3, "ESFJ": 3, "INFJ": 2 } },
+                        { text: "若即若离，保持神秘", scores: { "INTP": 3, "INTJ": 3, "INFJ": 2 } },
+                        { text: "热情主动，打成一片", scores: { "ENFJ": 3, "ENFP": 3, "ESFP": 2 } }
+                    ]
+                }
+            ]
+        };
+
+        // 获取URL参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const themeId = urlParams.get('theme') || 'harrypotper';
+
+        const theme = themesData[themeId] || themesData.harrypotter;
+        const questions = questionsData[themeId] || questionsData.harrypotter;
+
+        let currentQuestion = 0;
+        let answers = {};
+        let scores = {};
+
+        function render() {
+            const app = document.getElementById('app');
+            
+            if (currentQuestion >= questions.length) {
+                renderResult(app);
+                return;
+            }
+
+            const q = questions[currentQuestion];
+            const progress = ((currentQuestion) / questions.length) * 100;
+
+            app.innerHTML = `
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${progress}%"></div>
+                </div>
+                <div class="question-card">
+                    <div class="question-num">第 ${currentQuestion + 1} / ${questions.length} 题</div>
+                    <div class="question-text">${q.content}</div>
+                    <div class="options">
+                        ${q.options.map((opt, idx) => `
+                            <div class="option ${answers[q.id] === idx ? 'selected' : ''}" 
+                                 onclick="selectOption(${idx})">
+                                ${opt.text}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectOption(idx) {
+            const q = questions[currentQuestion];
+            const option = q.options[idx];
+            
+            answers[q.id] = idx;
+            
+            // 加分
+            for (const [type, score] of Object.entries(option.scores)) {
+                scores[type] = (scores[type] || 0) + score;
+            }
+            
+            currentQuestion++;
+            render();
+        }
+
+        function renderResult(app) {
+            // 计算角色得分
+            const charScores = {};
+            const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
+
+            theme.characters.forEach(char => {
+                const pCode = char.personality_code;
+                charScores[char.char_key] = scores[pCode] || 0;
+            });
+
+            // 排序
+            const sorted = Object.entries(charScores)
+                .sort((a, b) => b[1] - a[1])
+                .map(([key, score]) => {
+                    const char = theme.characters.find(c => c.char_key === key);
+                    return {
+                        ...char,
+                        score: score,
+                        percent: totalScore > 0 ? Math.round((score / totalScore) * 100) : 0
+                    };
+                });
+
+            const topResult = sorted[0];
+
+            app.innerHTML = `
+                <div class="question-card result-card">
+                    <div class="result-title">🎉 测试完成！</div>
+                    <div class="result-subtitle">${theme.title}</div>
+                    
+                    <div style="font-size: 2rem; margin: 30px 0;">
+                        ${topResult.name_cn}
+                    </div>
+                    <div style="color: #8892b0; margin-bottom: 20px;">
+                        匹配度 ${topResult.percent}%
+                    </div>
+                    
+                    <div class="result-list">
+                        ${sorted.map(r => `
+                            <div class="result-item">
+                                <div class="result-name">${r.name_cn}</div>
+                                <div class="result-bar">
+                                    <div class="result-fill" style="width: ${r.percent}%"></div>
+                                </div>
+                                <div class="result-percent">${r.percent}%</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <button class="btn" onclick="location.href='index.html'">再测一次</button>
+                </div>
+            `;
+        }
+
+        render();
+    </script>
+</body>
+</html>

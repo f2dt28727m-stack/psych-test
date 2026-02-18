@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心理测试题库 - Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #8892b0;
+            font-size: 1.1rem;
+        }
+        .category {
+            margin-bottom: 40px;
+        }
+        .category-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .theme-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .theme-card:hover {
+            transform: translateY(-4px);
+            border-color: #00d4ff;
+            box-shadow: 0 10px 40px rgba(0,212,255,0.2);
+        }
+        .theme-card.hot {
+            border-color: #ff6b6b;
+        }
+        .theme-card.hot::before {
+            content: '🔥';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+        }
+        .theme-card {
+            position: relative;
+        }
+        .theme-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .theme-desc {
+            color: #8892b0;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        .theme-meta {
+            display: flex;
+            gap: 12px;
+            font-size: 0.8rem;
+            color: #5a6a8a;
+        }
+        .tag {
+            background: rgba(0,212,255,0.2);
+            color: #00d4ff;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        .tag.mbti {
+            background: rgba(124,58,237,0.2);
+            color: #a78bfa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧪 心理测试题库</h1>
+            <p class="subtitle">探索你的性格密码</p>
+        </header>
+        
+        <div id="app"></div>
+    </div>
+
+    <script>
+        // 模拟数据
+        const data = {
+            categories: [
+                { id: 'hot', name: '🔥 全球顶流', icon: '🔥' },
+                { id: 'entertainment', name: '🎮 趣味娱乐', icon: '🎮' }
+            ],
+            themes: [
+                {
+                    id: 'mbti',
+                    category_id: 'hot',
+                    title: 'MBTI 16型人格测试',
+                    description: '全球最火的性格测试，你是哪种人格？',
+                    is_hot: true,
+                    hot_rank: 1,
+                    tag: 'mbti'
+                },
+                {
+                    id: 'harrypotter',
+                    category_id: 'entertainment',
+                    title: '你是哈利波特里的谁？',
+                    description: '霍格沃茨魔法学院人格匹配',
+                    is_hot: true,
+                    hot_rank: 2
+                },
+                {
+                    id: 'zhenhuan',
+                    category_id: 'entertainment',
+                    title: '甄嬛传人格测试',
+                    description: '你在后宫是什么段位？',
+                    is_hot: true,
+                    hot_rank: 3
+                },
+                {
+                    id: 'marvel',
+                    category_id: 'entertainment',
+                    title: '漫威超级英雄人格',
+                    description: '你是漫威宇宙里的谁？',
+                    is_hot: false
+                }
+            ]
+        };
+
+        function render() {
+            const app = document.getElementById('app');
+            let html = '';
+
+            data.categories.forEach(cat => {
+                const catThemes = data.themes.filter(t => t.category_id === cat.id);
+                if (catThemes.length === 0) return;
+
+                html += `
+                    <div class="category">
+                        <h2 class="category-title">${cat.icon} ${cat.name}</h2>
+                        <div class="theme-grid">
+                            ${catThemes.map(theme => `
+                                <div class="theme-card ${theme.is_hot ? 'hot' : ''}" onclick="goToTest('${theme.id}')">
+                                    <div class="theme-title">${theme.title}</div>
+                                    <div class="theme-desc">${theme.description}</div>
+                                    <div class="theme-meta">
+                                        ${theme.tag ? `<span class="tag ${theme.tag}">MBTI</span>` : ''}
+                                        ${theme.is_hot ? '<span class="tag">🔥热门</span>' : ''}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+
+            app.innerHTML = html;
+        }
+
+        function goToTest(themeId) {
+            window.location.href = `quiz.html?theme=${themeId}`;
+        }
+
+        render();
+    </script>
+</body>
+</html>

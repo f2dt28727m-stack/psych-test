@@ -1,0 +1,20 @@
+{
+  "personalities": [
+    {"type_code": "INTJ", "name_cn": "建筑师", "name_en": "Architect", "traits": ["理性", "独立", "战略", "分析"]},
+    {"type_code": "INTP", "name_cn": "逻辑学家", "name_en": "Logician", "traits": ["理性", "好奇", "分析", "抽象"]},
+    {"type_code": "ENTJ", "name_cn": "指挥官", "name_en": "Commander", "traits": ["果断", "自信", "领导", "战略"]},
+    {"type_code": "ENTP", "name_cn": "辩论家", "name_en": "Debater", "traits": ["创新", "好奇", "聪明", "健谈"]},
+    {"type_code": "INFJ", "name_cn": "提倡者", "name_en": "Advocate", "traits": ["理想", "洞察", "创意", "坚定"]},
+    {"type_code": "INFP", "name_cn": "调停者", "name_en": "Mediator", "traits": ["理想", "敏感", "创造", "忠诚"]},
+    {"type_code": "ENFJ", "name_cn": "主人公", "name_en": "Protagongst", "traits": ["温暖", "利他", "魅力", "责任"]},
+    {"type_code": "ENFP", "name_cn": "竞选者", "name_en": "Campaigner", "traits": ["热情", "创意", "社交", "冲动"]},
+    {"type_code": "ISTJ", "name_cn": "物流师", "name_en": "Logistician", "traits": ["可靠", "务实", "传统", "责任"]},
+    {"type_code": "ISFJ", "name_cn": "守卫者", "name_en": "Defender", "traits": ["传统", "温暖", "责任", "细致"]},
+    {"type_code": "ESTJ", "name_cn": "总经理", "name_en": "Executive", "traits": ["传统", "责任", "果断", "高效"]},
+    {"type_code": "ESFJ", "name_cn": "执政官", "name_en": "Consul", "traits": ["传统", "社交", "温暖", "责任"]},
+    {"type_code": "ISTP", "name_cn": "鉴赏家", "name_en": "Virtuoso", "traits": ["理性", "实用", "冒险", "灵活"]},
+    {"type_code": "ISFP", "name_cn": "探险家", "name_en": "Adventurer", "traits": ["艺术", "敏感", "灵活", "审美"]},
+    {"type_code": "ESTP", "name_cn": "企业家", "name_en": "Entrepreneur", "traits": ["活力", "实际", "冒险", "社交"]},
+    {"type_code": "ESFP", "name_cn": "表演者", "name_en": "Entertainer", "traits": ["活力", "社交", "热情", "实际"]}
+  ]
+}
