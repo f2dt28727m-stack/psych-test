@@ -6,66 +6,100 @@
       "description": "测测你在魔法世界的角色",
       "is_default": true,
       "questions": [
-        {
-          "id": "q1",
-          "content": "面对困难时，你会选择？",
-          "options": [
-            {"text": "制定详细计划一步步解决", "scores": {"INTJ": 3, "ISTJ": 3, "ESTJ": 2}},
-            {"text": "寻求朋友们的帮助", "scores": {"ESFJ": 3, "ENFJ": 2, "ENFP": 2}},
-            {"text": "凭直觉冲动去做", "scores": {"ESTP": 3, "ESFP": 3, "ENTP": 2}},
-            {"text": "先冷静分析情况", "scores": {"INTP": 3, "INFJ": 2, "INFP": 2}}
-          ]
-        },
-        {
-          "id": "q2",
-          "content": "你更喜欢哪种学习方式？",
-          "options": [
-            {"text": "跟着老师按部就班", "scores": {"ISFJ": 3, "ESFJ": 3, "ISTJ": 2}},
-            {"text": "自己看书研究原理", "scores": {"INTP": 3, "INTJ": 3, "INFJ": 2}},
-            {"text": "实践出真知，边做边学", "scores": {"ESTP": 3, "ESFP": 3, "ENTP": 2}},
-            {"text": "和同学讨论交流", "scores": {"ENFP": 3, "ENFJ": 2, "ENTJ": 2}}
-          ]
-        },
-        {
-          "id": "q3",
-          "content": "在团队中，你通常扮演什么角色？",
-          "options": [
-            {"text": "领导者，制定方向和规则", "scores": {"ENTJ": 3, "ESTJ": 3, "ENFJ": 2}},
-            {"text": "军师，提供策略和建议", "scores": {"INTJ": 3, "INTP": 3, "INFJ": 2}},
-            {"text": "和事佬，维持团队和谐", "scores": {"ESFJ": 3, "ISFJ": 3, "ENFP": 2}},
-            {"text": "执行者，冲在最前面", "scores": {"ESTP": 3, "ESFP": 3, "ISTP": 2}}
-          ]
-        },
-        {
-          "id": "q4",
-          "content": "你如何看待规则和权威？",
-          "options": [
-            {"text": "规则是用来遵守的", "scores": {"ISTJ": 3, "ESFJ": 3, "ESTJ": 2}},
-            {"text": "规则是参考，可以灵活变通", "scores": {"ENFP": 3, "ENTP": 3, "INFP": 2}},
-            {"text": "规则是为了打破而存在的", "scores": {"ENTP": 3, "ESTP": 3, "INTP": 2}},
-            {"text": "看情况，合理的遵守不合理的反对", "scores": {"INTJ": 3, "INFJ": 3, "ENFJ": 2}}
-          ]
-        },
-        {
-          "id": "q5",
-          "content": "你的朋友遇到烦恼向你倾诉，你会？",
-          "options": [
-            {"text": "给出具体的解决方案", "scores": {"ENTJ": 3, "ESTJ": 3, "INTJ": 2}},
-            {"text": "耐心倾听，陪伴在旁", "scores": {"ISFJ": 3, "ESFJ": 3, "INFJ": 2}},
-            {"text": "用幽默逗他开心", "scores": {"ESFP": 3, "ENFP": 3, "ESTP": 2}},
-            {"text": "分享自己的类似经历", "scores": {"INFP": 3, "ENFP": 3, "INTP": 2}}
-          ]
-        },
-        {
-          "id": "q6",
-          "content": "你更喜欢什么样的未来？",
-          "options": [
-            {"text": "稳定、可预测的生活", "scores": {"ISFJ": 3, "ISTJ": 3, "ESFJ": 2}},
-            {"text": "充满挑战和机遇的冒险", "scores": {"ENTP": 3, "ESTP": 3, "ENTJ": 2}},
-            {"text": "有意义，帮助他人的事业", "scores": {"ENFJ": 3, "INFJ": 3, "ESFJ": 2}},
-            {"text": "自由独立，按自己的节奏生活", "scores": {"INTP": 3, "INTJ": 3, "INFP": 2}}
-          ]
-        }
+        {"id": "q1", "content": "面对困难时，你会选择？", "options": [
+          {"text": "制定详细计划一步步解决", "scores": {"INTJ": 3, "ISTJ": 3, "ESTJ": 2}},
+          {"text": "寻求朋友们的帮助", "scores": {"ESFJ": 3, "ENFJ": 2, "ENFP": 2}},
+          {"text": "凭直觉冲动去做", "scores": {"ESTP": 3, "ESFP": 3, "ENTP": 2}},
+          {"text": "先冷静分析情况", "scores": {"INTP": 3, "INFJ": 2, "INFP": 2}}
+        ]},
+        {"id": "q2", "content": "你更喜欢哪种学习方式？", "options": [
+          {"text": "跟着老师按部就班", "scores": {"ISFJ": 3, "ESFJ": 3, "ISTJ": 2}},
+          {"text": "自己看书研究原理", "scores": {"INTP": 3, "INTJ": 3, "INFJ": 2}},
+          {"text": "实践出真知，边做边学", "scores": {"ESTP": 3, "ESFP": 3, "ENTP": 2}},
+          {"text": "和同学讨论交流", "scores": {"ENFP": 3, "ENFJ": 2, "ENTJ": 2}}
+        ]},
+        {"id": "q3", "content": "在团队中，你通常扮演什么角色？", "options": [
+          {"text": "领导者，制定方向和规则", "scores": {"ENTJ": 3, "ESTJ": 3, "ENFJ": 2}},
+          {"text": "军师，提供策略和建议", "scores": {"INTJ": 3, "INTP": 3, "INFJ": 2}},
+          {"text": "和事佬，维持团队和谐", "scores": {"ESFJ": 3, "ISFJ": 3, "ENFP": 2}},
+          {"text": "执行者，冲在最前面", "scores": {"ESTP": 3, "ESFP": 3, "ISTP": 2}}
+        ]},
+        {"id": "q4", "content": "你如何看待规则和权威？", "options": [
+          {"text": "规则是用来遵守的", "scores": {"ISTJ": 3, "ESFJ": 3, "ESTJ": 2}},
+          {"text": "规则是参考，可以灵活变通", "scores": {"ENFP": 3, "ENTP": 3, "INFP": 2}},
+          {"text": "规则是为了打破而存在的", "scores": {"ENTP": 3, "ESTP": 3, "INTP": 2}},
+          {"text": "看情况，合理的遵守不合理的反对", "scores": {"INTJ": 3, "INFJ": 3, "ENFJ": 2}}
+        ]},
+        {"id": "q5", "content": "你的朋友遇到烦恼向你倾诉，你会？", "options": [
+          {"text": "给出具体的解决方案", "scores": {"ENTJ": 3, "ESTJ": 3, "INTJ": 2}},
+          {"text": "耐心倾听，陪伴在旁", "scores": {"ISFJ": 3, "ESFJ": 3, "INFJ": 2}},
+          {"text": "用幽默逗他开心", "scores": {"ESFP": 3, "ENFP": 3, "ESTP": 2}},
+          {"text": "分享自己的类似经历", "scores": {"INFP": 3, "ENFP": 3, "INTP": 2}}
+        ]},
+        {"id": "q6", "content": "你更喜欢什么样的未来？", "options": [
+          {"text": "稳定、可预测的生活", "scores": {"ISFJ": 3, "ISTJ": 3, "ESFJ": 2}},
+          {"text": "充满挑战和机遇的冒险", "scores": {"ENTP": 3, "ESTP": 3, "ENTJ": 2}},
+          {"text": "有意义，帮助他人的事业", "scores": {"ENFJ": 3, "INFJ": 3, "ESFJ": 2}},
+          {"text": "自由独立，按自己的节奏生活", "scores": {"INTP": 3, "INTJ": 3, "INFP": 2}}
+        ]}
+      ]
+    },
+    {
+      "theme_id": "harrypotter",
+      "title": "你的守护神是什么？",
+      "description": "测测你的守护神形态",
+      "is_default": false,
+      "questions": [
+        {"id": "q1", "content": "面对危险时，你的本能反应是？", "options": [
+          {"text": "保护身边的人", "scores": {"ISFJ": 3, "ESFJ": 3, "ENFJ": 2}},
+          {"text": "冷静分析寻找出路", "scores": {"INTJ": 3, "INTP": 3, "ISTJ": 2}},
+          {"text": "冲上去战斗", "scores": {"ESTP": 3, "ENTJ": 3, "ESTJ": 2}},
+          {"text": "想办法智取", "scores": {"ENTP": 3, "ENFP": 3, "INFJ": 2}}
+        ]},
+        {"id": "q2", "content": "你内心最害怕失去的是？", "options": [
+          {"text": "亲人和朋友", "scores": {"ESFJ": 3, "ISFJ": 3, "ENFJ": 2}},
+          {"text": "自由和独立", "scores": {"INTP": 3, "ENTP": 3, "INTJ": 2}},
+          {"text": "荣誉和成就", "scores": {"ENTJ": 3, "ESTJ": 3, "ESTP": 2}},
+          {"text": "爱与被爱的能力", "scores": {"INFP": 3, "INFJ": 3, "ENFP": 2}}
+        ]},
+        {"id": "q3", "content": "你希望拥有哪种能力？", "options": [
+          {"text": "治愈一切的力量", "scores": {"ISFJ": 3, "INFJ": 3, "ENFJ": 2}},
+          {"text": "预知未来的智慧", "scores": {"INTJ": 3, "INFJ": 3, "INTP": 2}},
+          {"text": "无穷的力量", "scores": {"ESTJ": 3, "ENTJ": 3, "ESTP": 2}},
+          {"text": "变换形态的能力", "scores": {"ENFP": 3, "ENTP": 3, "INFP": 2}}
+        ]},
+        {"id": "q4", "content": "在战斗中你更注重？", "options": [
+          {"text": "团队配合，相互保护", "scores": {"ESFJ": 3, "ISFJ": 3, "ENFJ": 2}},
+          {"text": "战术策略，弱点攻击", "scores": {"INTJ": 3, "INTP": 3, "ENTP": 2}},
+          {"text": "正面突破，一往无前", "scores": {"ESTP": 3, "ESTJ": 3, "ENTJ": 2}},
+          {"text": "灵活应变，出其不意", "scores": {"ENFP": 3, "ENTP": 3, "INFP": 2}}
+        ]}
+      ]
+    },
+    {
+      "theme_id": "harrypotter",
+      "title": "你适合哪种魔法？",
+      "description": "测测你的魔法属性",
+      "is_default": false,
+      "questions": [
+        {"id": "q1", "content": "你更喜欢哪种解决问题的方式？", "options": [
+          {"text": "用强大的力量直接解决", "scores": {"ESTJ": 3, "ENTJ": 3, "ESTP": 2}},
+          {"text": "用智慧和技巧巧妙化解", "scores": {"INTP": 3, "INTJ": 3, "ENTP": 2}},
+          {"text": "用爱和关怀感化他人", "scores": {"ENFJ": 3, "INFJ": 3, "ISFJ": 2}},
+          {"text": "随机应变，见招拆招", "scores": {"ENFP": 3, "ESFP": 3, "INFP": 2}}
+        ]},
+        {"id": "q2", "content": "什么样的魔法最吸引你？", "options": [
+          {"text": "攻击性魔法，强大炫酷", "scores": {"ESTJ": 3, "ESTP": 3, "ENTJ": 2}},
+          {"text": "防御性魔法，保护大家", "scores": {"ISFJ": 3, "ESFJ": 3, "INFJ": 2}},
+          {"text": "治愈系魔法，温暖人心", "scores": {"INFJ": 3, "INFP": 3, "ENFJ": 2}},
+          {"text": "变形魔法，千变万化", "scores": {"ENTP": 3, "ENFP": 3, "INTP": 2}}
+        ]},
+        {"id": "q3", "content": "你学习魔法的目的是？", "options": [
+          {"text": "获得力量，保护重要的人", "scores": {"ENTJ": 3, "ESTJ": 3, "ISTJ": 2}},
+          {"text": "探索真理，了解世界的本质", "scores": {"INTP": 3, "INTJ": 3, "INFJ": 2}},
+          {"text": "帮助他人，成为有用的人", "scores": {"ENFJ": 3, "ISFJ": 3, "ESFJ": 2}},
+          {"text": "有趣，好玩，体验新事物", "scores": {"ENFP": 3, "ESFP": 3, "ENTP": 2}}
+        ]}
       ]
     },
     {
@@ -74,36 +108,254 @@
       "description": "测测你在后宫是什么段位",
       "is_default": true,
       "questions": [
-        {
-          "id": "q1",
-          "content": "有人背后说你坏话，你会？",
-          "options": [
-            {"text": "当面揭穿，不惯着", "scores": {"ESTJ": 3, "ENTJ": 3, "ESTP": 2}},
-            {"text": "记在心里，找机会还击", "scores": {"INTJ": 3, "INFJ": 3, "INTP": 2}},
-            {"text": "假装不知道，暗中观察", "scores": {"ISFJ": 3, "ISTP": 3, "INFP": 2}},
-            {"text": "找朋友倾诉发泄", "scores": {"ENFP": 3, "ESFP": 3, "ENFJ": 2}}
-          ]
-        },
-        {
-          "id": "q2",
-          "content": "面对竞争，你会？",
-          "options": [
-            {"text": "正面刚，谁怕谁", "scores": {"ESTJ": 3, "ESTP": 3, "ENTJ": 2}},
-            {"text": "暗中布局，等机会", "scores": {"INTJ": 3, "INTP": 3, "INFJ": 2}},
-            {"text": "拉帮结派，搞定关系", "scores": {"ENFJ": 3, "ESFJ": 3, "ENFP": 2}},
-            {"text": "退出竞争，保平安", "scores": {"ISFJ": 3, "INFP": 3, "ISFP": 2}}
-          ]
-        },
-        {
-          "id": "q3",
-          "content": "你更喜欢哪种相处方式？",
-          "options": [
-            {"text": "直来直去，有话说话", "scores": {"ESTJ": 3, "ESTP": 3, "ENTJ": 2}},
-            {"text": "温和细致，照顾感受", "scores": {"ISFJ": 3, "ESFJ": 3, "INFJ": 2}},
-            {"text": "若即若离，保持神秘", "scores": {"INTP": 3, "INTJ": 3, "INFJ": 2}},
-            {"text": "热情主动，打成一片", "scores": {"ENFJ": 3, "ENFP": 3, "ESFP": 2}}
-          ]
-        }
+        {"id": "q1", "content": "有人背后说你坏话，你会？", "options": [
+          {"text": "当面揭穿，不惯着", "scores": {"ESTJ": 3, "ENTJ": 3, "ESTP": 2}},
+          {"text": "记在心里，找机会还击", "scores": {"INTJ": 3, "INFJ": 3, "INTP": 2}},
+          {"text": "假装不知道，暗中观察", "scores": {"ISFJ": 3, "ISTP": 3, "INFP": 2}},
+          {"text": "找朋友倾诉发泄", "scores": {"ENFP": 3, "ESFP": 3, "ENFJ": 2}}
+        ]},
+        {"id": "q2", "content": "面对竞争，你会？", "options": [
+          {"text": "正面刚，谁怕谁", "scores": {"ESTJ": 3, "ESTP": 3, "ENTJ": 2}},
+          {"text": "暗中布局，等机会", "scores": {"INTJ": 3, "INTP": 3, "INFJ": 2}},
+          {"text": "拉帮结派，搞定关系", "scores": {"ENFJ": 3, "ESFJ": 3, "ENFP": 2}},
+          {"text": "退出竞争，保平安", "scores": {"ISFJ": 3, "INFP": 3, "ISFP": 2}}
+        ]},
+        {"id": "q3", "content": "你更喜欢哪种相处方式？", "options": [
+          {"text": "直来直去，有话说话", "scores": {"ESTJ": 3, "ESTP": 3, "ENTJ": 2}},
+          {"text": "温和细致，照顾感受", "scores": {"ISFJ": 3, "ESFJ": 3, "INFJ": 2}},
+          {"text": "若即若离，保持神秘", "scores": {"INTP": 3, "INTJ": 3, "INFJ": 2}},
+          {"text": "热情主动，打成一片", "scores": {"ENFJ": 3, "ENFP": 3, "ESFP": 2}}
+        ]}
+      ]
+    },
+    {
+      "theme_id": "zhenhuan",
+      "title": "你的宫斗段位",
+      "description": "测测你的宫斗指数",
+      "is_default": false,
+      "questions": [
+        {"id": "q1", "content": "当你被陷害时，第一反应是？", "options": [
+          {"text": "立刻反击，证明清白", "scores": {"ESTJ": 3, "ENTJ": 3, "ESTP": 2}},
+          {"text": "冷静收集证据，等待时机", "scores": {"INTJ": 3, "INTP": 3, "INFJ": 2}},
+          {"text": "先示弱，博取同情", "scores": {"ISFJ": 3, "INFP": 3, "ESFJ": 2}},
+          {"text": "一哭二闹三上吊", "scores": {"ESFP": 3, "ENFP": 3, "ISFP": 2}}
+        ]},
+        {"id": "q2", "content": "你如何看待权力？", "options": [
+          {"text": "权力是最好的武器", "scores": {"ENTJ": 3, "ESTJ": 3, "ESTP": 2}},
+          {"text": "权力是保护家人的工具", "scores": {"INTJ": 3, "ISFJ": 3, "INFJ": 2}},
+          {"text": "权力是负担，不想要", "scores": {"INFP": 3, "ISFP": 3, "INFJ": 2}},
+          {"text": "有权不用过期作废", "scores": {"ESFP": 3, "ENFP": 3, "ENTP": 2}}
+        ]},
+        {"id": "q3", "content": "你会为了生存牺牲什么？", "options": [
+          {"text": "感情，生存最重要", "scores": {"INTJ": 3, "ENTJ": 3, "ESTJ": 2}},
+          {"text": "尊严，只要活着就行", "scores": {"ISFJ": 3, "ISTP": 3, "ESFJ": 2}},
+          {"text": "良心，成王败寇", "scores": {"ENTP": 3, "ESTP": 3, "INTP": 2}},
+          {"text": "什么都不愿意牺牲", "scores": {"ENFP": 3, "INFP": 3, "INFJ": 2}}
+        ]},
+        {"id": "q4", "content": "你更相信什么？", "options": [
+          {"text": "权力和地位", "scores": {"ENTJ": 3, "ESTJ": 3, "ESTP": 2}},
+          {"text": "智慧和谋略", "scores": {"INTJ": 3, "INTP": 3, "INFJ": 2}},
+          {"text": "真情和真心", "scores": {"INFP": 3, "INFJ": 3, "ENFJ": 2}},
+          {"text": "金钱和利益", "scores": {"ISTP": 3, "ISFP": 3, "ESFP": 2}}
+        ]}
+      ]
+    },
+    {
+      "theme_id": "marvel",
+      "title": "漫威超级英雄人格",
+      "description": "你是漫威宇宙里的谁？",
+      "is_default": true,
+      "questions": [
+        {"id": "q1", "content": "面对强大的敌人，你会？", "options": [
+          {"text": "正面刚，打趴下", "scores": {"ESTJ": 3, "ESTP": 3, "ENTJ": 2}},
+          {"text": "用智慧和科技战胜他", "scores": {"INTJ": 3, "INTP": 3, "ENTP": 2}},
+          {"text": "保护队友，先让大家安全", "scores": {"ISFJ": 3, "ESFJ": 3, "ENFJ": 2}},
+          {"text": "想办法跑路，留得青山在", "scores": {"INFP": 3, "ENFP": 3, "ISFP": 2}}
+        ]},
+        {"id": "q2", "content": "你更看重什么？", "options": [
+          {"text": "力量和能力", "scores": {"ESTJ": 3, "ENTJ": 3, "ESTP": 2}},
+          {"text": "知识和智慧", "scores": {"INTP": 3, "INTJ": 3, "INFJ": 2}},
+          {"text": "牺牲和责任", "scores": {"ISFJ": 3, "ENFJ": 3, "INFJ": 2}},
+          {"text": "自由和快乐", "scores": {"ENFP": 3, "ESFP": 3, "INFP": 2}}
+        ]},
+        {"id": "q3", "content": "你的超能力最想用来？", "options": [
+          {"text": "拯救世界，成为英雄", "scores": {"ENFJ": 3, "ENTJ": 3, "ESTJ": 2}},
+          {"text": "探索宇宙的奥秘", "scores": {"INTP": 3, "INTJ": 3, "INFJ": 2}},
+          {"text": "保护家人和朋友", "scores": {"ISFJ": 3, "ESFJ": 3, "INFP": 2}},
+          {"text": "享受生活，玩得开心", "scores": {"ENFP": 3, "ESFP": 3, "ENTP": 2}}
+        ]},
+        {"id": "q4", "content": "你更喜欢哪种战斗方式？", "options": [
+          {"text": "正面突击，勇往直前", "scores": {"ESTP": 3, "ESTJ": 3, "ENTJ": 2}},
+          {"text": "远程攻击，掌控全局", "scores": {"INTJ": 3, "ENTP": 3, "INTP": 2}},
+          {"text": "守护队友，做坚强后盾", "scores": {"ISFJ": 3, "ESFJ": 3, "INFJ": 2}},
+          {"text": "灵活游击，找准时机", "scores": {"ENFP": 3, "INFP": 3, "ENTP": 2}}
+        ]}
+      ]
+    },
+    {
+      "theme_id": "marvel",
+      "title": "漫威英雄cp配对",
+      "description": "你最适合和谁在一起？",
+      "is_default": false,
+      "questions": [
+        {"id": "q1", "content": "你理想中的爱情是？", "options": [
+          {"text": "并肩作战，共同成长", "scores": {"ENFJ": 3, "ENTJ": 3, "ESTJ": 2}},
+          {"text": "灵魂伴侣，心灵相通", "scores": {"INFJ": 3, "INFP": 3, "INTP": 2}},
+          {"text": "互补长短，相互扶持", "scores": {"ISFJ": 3, "ESFJ": 3, "ISTJ": 2}},
+          {"text": "激情四射，轰轰烈烈", "scores": {"ENFP": 3, "ESTP": 3, "ESFP": 2}}
+        ]},
+        {"id": "q2", "content": "吵架时你会？", "options": [
+          {"text": "据理力争，不退让", "scores": {"ENTJ": 3, "ESTJ": 3, "ESTP": 2}},
+          {"text": "冷战，谁也不理谁", "scores": {"INTJ": 3, "INTP": 3, "INFP": 2}},
+          {"text": "主动求和，卖萌撒娇", "scores": {"ENFP": 3, "ESFP": 3, "INFP": 2}},
+          {"text": "讲道理，找出解决办法", "scores": {"ISFJ": 3, "INFJ": 3, "ENFJ": 2}}
+        ]},
+        {"id": "q3", "content": "你希望伴侣比你强吗？", "options": [
+          {"text": "希望，这样有崇拜感", "scores": {"ISFJ": 3, "ENFP": 3, "ESFJ": 2}},
+          {"text": "不希望，压力太大", "scores": {"INTJ": 3, "INFP": 3, "ISTJ": 2}},
+          {"text": "无所谓，各自精彩", "scores": {"ENTP": 3, "ENFP": 3, "INTP": 2}},
+          {"text": "希望强强联手", "scores": {"ENTJ": 3, "ESTJ": 3, "ENFJ": 2}}
+        ]}
+      ]
+    },
+    {
+      "theme_id": "marvel",
+      "title": "DC英雄人格测试",
+      "description": "你是DC宇宙里的谁？",
+      "is_default": false,
+      "questions": [
+        {"id": "q1", "content": "你更认同哪位英雄的理念？", "options": [
+          {"text": "以暴制暴，宁可错杀", "scores": {"ENTJ": 3, "ESTJ": 3, "INTJ": 2}},
+          {"text": "不杀原则，给敌人机会", "scores": {"ISFJ": 3, "INFJ": 3, "ENFJ": 2}},
+          {"text": "混乱中立，只按自己规则", "scores": {"ENTP": 3, "INTP": 3, "ESTP": 2}},
+          {"text": "为了正义可以牺牲一切", "scores": {"INTJ": 3, "ESTJ": 3, "ENFJ": 2}}
+        ]},
+        {"id": "q2", "content": "你的超能力来源是？", "options": [
+          {"text": "高科技装备", "scores": {"INTJ": 3, "ENTP": 3, "ESTJ": 2}},
+          {"text": "后天训练和意志", "scores": {"ISTJ": 3, "ESTJ": 3, "ENTJ": 2}},
+          {"text": "天赋异禀，神赐之力", "scores": {"ENFJ": 3, "INFJ": 3, "ENFP": 2}},
+          {"text": "意外或实验", "scores": {"ENTP": 3, "ESFP": 3, "INFP": 2}}
+        ]},
+        {"id": "q3", "content": "你为什么成为英雄？", "options": [
+          {"text": "为了复仇", "scores": {"INTJ": 3, "ENTJ": 3, "ESTJ": 2}},
+          {"text": "为了正义和责任", "scores": {"INFJ": 3, "ENFJ": 3, "ISTJ": 2}},
+          {"text": "为了拯救重要的人", "scores": {"ISFJ": 3, "ENFJ": 3, "INFP": 2}},
+          {"text": "为了证明自己", "scores": {"ENTP": 3, "ENFP": 3, "ESTP": 2}}
+        ]},
+        {"id": "q4", "content": "你更想加入哪个阵营？", "options": [
+          {"text": "正义联盟", "scores": {"INFJ": 3, "ENFJ": 3, "ISFJ": 2}},
+          {"text": "黑暗正义联盟", "scores": {"INTJ": 3, "INTP": 3, "INFP": 2}},
+          {"text": "自杀小队", "scores": {"ENTP": 3, "ESTP": 3, "ISTP": 2}},
+          {"text": "少年泰坦", "scores": {"ENFP": 3, "ESFP": 3, "INFP": 2}}
+        ]}
+      ]
+    },
+    {
+      "theme_id": "mbti",
+      "title": "MBTI 16型人格测试",
+      "description": "测测你是哪种MBTI人格",
+      "is_default": true,
+      "questions": [
+        {"id": "q1", "content": "你在社交场合通常是？", "options": [
+          {"text": "人群中的焦点，侃侃而谈", "scores": {"ENFJ": 3, "ENFP": 3, "ESFJ": 2, "ESFP": 2}},
+          {"text": "观察者，倾听为主", "scores": {"INFJ": 3, "INTJ": 3, "INFP": 2, "INTP": 2}},
+          {"text": "看情况，遇到熟人很活跃", "scores": {"ISFJ": 3, "ISTJ": 3, "ISFP": 2, "ISTP": 2}},
+          {"text": "看心情，有时话唠有时安静", "scores": {"ENTP": 3, "ENTJ": 3, "ESTP": 3, "ESTJ": 2}}
+        ]},
+        {"id": "q2", "content": "你做决定更依赖？", "options": [
+          {"text": "逻辑分析，利弊权衡", "scores": {"INTJ": 3, "INTP": 3, "ISTJ": 2, "ESTJ": 2}},
+          {"text": "内心感受，考虑大家心情", "scores": {"INFJ": 3, "INFP": 3, "ENFJ": 2, "ENFP": 2}},
+          {"text": "凭直觉，感觉对了就行", "scores": {"ENFP": 3, "ENTP": 3, "ESFP": 2, "ESTP": 2}},
+          {"text": "经验和惯例，稳妥为主", "scores": {"ISFJ": 3, "ESFJ": 3, "ISTJ": 2, "ESTJ": 2}}
+        ]},
+        {"id": "q3", "content": "你更喜欢？", "options": [
+          {"text": "制定计划，按部就班", "scores": {"ISTJ": 3, "ESTJ": 3, "INTJ": 2, "ISFJ": 2}},
+          {"text": "随性而为，随时调整", "scores": {"ENFP": 3, "ENTP": 3, "ESFP": 2, "ESTP": 2}},
+          {"text": "有大概方向，细节灵活", "scores": {"INTJ": 3, "INFJ": 3, "ENFJ": 2, "ENTJ": 2}},
+          {"text": "边做边看，见机行事", "scores": {"INFP": 3, "ISFP": 3, "ISFJ": 2, "ESFJ": 2}}
+        ]},
+        {"id": "q4", "content": "你更关注？", "options": [
+          {"text": "具体现实，着眼于当下", "scores": {"ISTJ": 3, "ISFJ": 3, "ESTJ": 2, "ESFJ": 2}},
+          {"text": "抽象概念，探索可能性", "scores": {"INTP": 3, "INTJ": 3, "ENTP": 2, "ENFP": 2}},
+          {"text": "他人需求，照顾感受", "scores": {"ENFJ": 3, "ESFJ": 3, "INFJ": 2, "INFP": 2}},
+          {"text": "新的体验和感觉", "scores": {"ESFP": 3, "ESTP": 3, "ENFP": 2, "ENTP": 2}}
+        ]},
+        {"id": "q5", "content": "你容易受什么影响？", "options": [
+          {"text": "数据和事实", "scores": {"INTJ": 3, "INTP": 3, "ISTJ": 2, "ESTJ": 2}},
+          {"text": "情感和价值观", "scores": {"INFJ": 3, "INFP": 3, "ENFJ": 2, "ENFP": 2}},
+          {"text": "权威和传统", "scores": {"ISTJ": 3, "ESFJ": 3, "ISFJ": 2, "ESTJ": 2}},
+          {"text": "新鲜事物和创意", "scores": {"ENTP": 3, "ENFP": 3, "ESFP": 2, "ESTP": 2}}
+        ]},
+        {"id": "q6", "content": "工作时你更喜欢？", "options": [
+          {"text": "独立完成，自由发挥", "scores": {"INTJ": 3, "INTP": 3, "INFP": 2, "ISTP": 2}},
+          {"text": "团队合作，大家一起", "scores": {"ENFJ": 3, "ESFJ": 3, "ISFJ": 2, "ESFP": 2}},
+          {"text": "有明确目标和截止日期", "scores": {"ESTJ": 3, "ISTJ": 3, "ENTJ": 2, "ISFJ": 2}},
+          {"text": "灵活的工作方式", "scores": {"ENFP": 3, "ENTP": 3, "INFP": 2, "ESFP": 2}}
+        ]}
+      ]
+    },
+    {
+      "theme_id": "mbti",
+      "title": "MBTI 职业倾向测试",
+      "description": "测测你适合什么工作",
+      "is_default": false,
+      "questions": [
+        {"id": "q1", "content": "你理想的工作环境是？", "options": [
+          {"text": "高压高回报，有挑战性", "scores": {"ENTJ": 3, "ESTJ": 3, "ESTP": 2}},
+          {"text": "稳定有序，按规则办事", "scores": {"ISTJ": 3, "ISFJ": 3, "ESTJ": 2}},
+          {"text": "自由灵活，充满创意", "scores": {"ENFP": 3, "ENTP": 3, "INFP": 2}},
+          {"text": "有意义，能帮助他人", "scores": {"ENFJ": 3, "INFJ": 3, "ISFJ": 2}}
+        ]},
+        {"id": "q2", "content": "面对工作中的问题，你会？", "options": [
+          {"text": "快速决策，立刻行动", "scores": {"ENTJ": 3, "ESTJ": 3, "ESTP": 2}},
+          {"text": "分析原因，找出根本解", "scores": {"INTJ": 3, "INTP": 3, "ISTJ": 2}},
+          {"text": "找同事讨论，集思广益", "scores": {"ENFJ": 3, "ENFP": 3, "ESFJ": 2}},
+          {"text": "先观察，看看再说", "scores": {"INFJ": 3, "INFP": 3, "ISFP": 2}}
+        ]},
+        {"id": "q3", "content": "你更看重工作的？", "options": [
+          {"text": "金钱和地位", "scores": {"ENTJ": 3, "ESTJ": 3, "ESTP": 2}},
+          {"text": "成长和学习机会", "scores": {"INTP": 3, "INTJ": 3, "ENFP": 2}},
+          {"text": "工作氛围和同事关系", "scores": {"ESFJ": 3, "ISFJ": 3, "ENFJ": 2}},
+          {"text": "意义和价值", "scores": {"INFJ": 3, "INFP": 3, "ENFJ": 2}}
+        ]},
+        {"id": "q4", "content": "你擅长？", "options": [
+          {"text": "领导和指挥他人", "scores": {"ENTJ": 3, "ESTJ": 3, "ENFJ": 2}},
+          {"text": "独立思考和创新", "scores": {"INTJ": 3, "INTP": 3, "ENFP": 2}},
+          {"text": "执行和落实", "scores": {"ISTJ": 3, "ISFJ": 3, "ESTJ": 2}},
+          {"text": "沟通和协调", "scores": {"ENFJ": 3, "ESFJ": 3, "ENFP": 2}}
+        ]}
+      ]
+    },
+    {
+      "theme_id": "mbti",
+      "title": "MBTI 恋爱匹配测试",
+      "description": "测测你的恋爱人格",
+      "is_default": false,
+      "questions": [
+        {"id": "q1", "content": "恋爱中你最看重？", "options": [
+          {"text": "承诺和安全感", "scores": {"ISFJ": 3, "ISTJ": 3, "ESFJ": 2}},
+          {"text": "激情和新奇感", "scores": {"ENFP": 3, "ENTP": 3, "ESFP": 2}},
+          {"text": "深度连接和精神交流", "scores": {"INFJ": 3, "INFP": 3, "INTP": 2}},
+          {"text": "共同目标和成长", "scores": {"ENTJ": 3, "INTJ": 3, "ENFJ": 2}}
+        ]},
+        {"id": "q2", "content": "你表达爱意的方式是？", "options": [
+          {"text": "行动多于言语，做实事", "scores": {"ISTJ": 3, "ISFJ": 3, "ESTJ": 2}},
+          {"text": "甜言蜜语，浪漫惊喜", "scores": {"ENFP": 3, "ENFJ": 3, "ESFJ": 2}},
+          {"text": "陪伴和支持", "scores": {"INFJ": 3, "INFP": 3, "ISFJ": 2}},
+          {"text": "送礼和花时间在一起", "scores": {"ESFJ": 3, "ESFP": 3, "ESTP": 2}}
+        ]},
+        {"id": "q3", "content": "恋爱中你更担心？", "options": [
+          {"text": "被抛弃或背叛", "scores": {"ISFJ": 3, "ESFJ": 3, "ENFJ": 2}},
+          {"text": "失去自由和个人空间", "scores": {"INTP": 3, "INTJ": 3, "ENTP": 2}},
+          {"text": "没有共同话题和成长", "scores": {"INFJ": 3, "ENFJ": 3, "INTJ": 2}},
+          {"text": "关系变得无聊平淡", "scores": {"ENFP": 3, "ENTP": 3, "ESFP": 2}}
+        ]},
+        {"id": "q4", "content": "发生矛盾时你会？", "options": [
+          {"text": "冷静分析谁对谁错", "scores": {"INTJ": 3, "INTP": 3, "ESTJ": 2}},
+          {"text": "先道歉哄人，再慢慢聊", "scores": {"ENFJ": 3, "ENFP": 3, "ESFJ": 2}},
+          {"text": "冷战，等对方先开口", "scores": {"INFJ": 3, "INFP": 3, "INTP": 2}},
+          {"text": "直接吵出来，说清楚", "scores": {"ESTJ": 3, "ESTP": 3, "ENTJ": 2}}
+        ]}
       ]
     }
   ]
