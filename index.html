@@ -3,304 +3,493 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Hub - Personality Tests</title>
+    <title>Quizy - Personality Tests</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0f0f0f;
+            background: #0a0a0a;
             color: #fff;
             min-height: 100vh;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         
-        /* Search */
-        .search-section { padding: 30px 0; text-align: center; }
-        .search-box {
-            width: 100%;
-            max-width: 600px;
-            padding: 16px 24px;
-            font-size: 18px;
-            border: none;
-            border-radius: 50px;
-            background: #1a1a1a;
-            color: #fff;
-            outline: none;
-        }
-        .search-box::placeholder { color: #666; }
-        
-        /* Section titles */
-        .section-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 20px;
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(10px);
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-bottom: 1px solid #222;
+            z-index: 100;
         }
-        .section { margin-bottom: 50px; }
-        
-        /* Hot tests - horizontal scroll */
-        .hot-scroll {
-            display: flex;
-            gap: 16px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-            scrollbar-width: thin;
-            scrollbar-color: #333 #111;
-        }
-        .hot-scroll::-webkit-scrollbar { height: 6px; }
-        .hot-scroll::-webkit-scrollbar-track { background: #111; }
-        .hot-scroll::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
-        
-        .hot-card {
-            min-width: 200px;
-            height: 280px;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            border-radius: 16px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        .hot-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,212,255,0.3);
-        }
-        .hot-card::before {
-            content: '🔥';
-            position: absolute;
-            top: 12px;
-            right: 12px;
+        .logo {
             font-size: 24px;
-        }
-        .hot-card .title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        .hot-card .count {
-            font-size: 14px;
-            color: #888;
-        }
-        
-        /* Grid - 4 columns */
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-        @media (max-width: 900px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 500px) { .grid-4 { grid-template-columns: 1fr; } }
-        
-        .grid-card {
-            background: #1a1a1a;
-            border-radius: 16px;
-            padding: 24px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             cursor: pointer;
-            transition: all 0.3s;
-            border: 1px solid #333;
         }
-        .grid-card:hover {
-            border-color: #00d4ff;
-            transform: translateY(-3px);
-        }
-        .grid-card .title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        .grid-card .desc {
-            font-size: 14px;
-            color: #888;
+        .search-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            background: #1a1a1a;
+            border-radius: 50%;
         }
         
-        /* All list */
-        .all-list {
+        /* Tab Nav */
+        .tab-nav {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: #0a0a0a;
             display: flex;
-            flex-direction: column;
-            gap: 12px;
+            border-bottom: 1px solid #222;
+            z-index: 99;
         }
-        .all-item {
-            background: #1a1a1a;
-            padding: 16px 20px;
-            border-radius: 12px;
+        .tab {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 500;
+            color: #666;
+            cursor: pointer;
+            position: relative;
+        }
+        .tab.active { color: #fff; }
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+            right: 20%;
+            height: 3px;
+            background: #00d4ff;
+            border-radius: 3px 3px 0 0;
+        }
+        
+        /* Main content */
+        .main {
+            padding-top: 120px;
+            padding-bottom: 80px;
+            min-height: 100vh;
+        }
+        
+        /* Page */
+        .page { display: none; }
+        .page.active { display: block; }
+        
+        /* Section */
+        .section { margin-bottom: 30px; }
+        .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 20px;
+            margin-bottom: 15px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .section-more {
+            font-size: 14px;
+            color: #666;
+            cursor: pointer;
+        }
+        
+        /* Cards */
+        .card-list {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 0 20px 10px;
+            scrollbar-width: thin;
+            scrollbar-color: #333 #111;
+        }
+        .card-list::-webkit-scrollbar { height: 4px; }
+        .card-list::-webkit-scrollbar-track { background: #111; }
+        .card-list::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+        
+        .card {
+            min-width: 160px;
+            background: #141414;
+            border-radius: 14px;
+            padding: 16px;
             cursor: pointer;
             transition: all 0.2s;
             border: 1px solid #222;
         }
-        .all-item:hover {
-            background: #222;
-            border-color: #444;
+        .card:hover {
+            border-color: #00d4ff;
+            transform: translateY(-2px);
         }
-        .all-item .title { font-weight: 500; }
-        .all-item .arrow { color: #666; }
+        .card-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .card-meta {
+            font-size: 12px;
+            color: #555;
+        }
+        
+        /* Grid for All page */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 0 20px;
+        }
+        .grid .card {
+            min-width: unset;
+        }
+        
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 10px;
+            padding: 15px 20px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .filters::-webkit-scrollbar { display: none; }
+        .filter-btn {
+            padding: 8px 16px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #888;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .filter-btn.active {
+            background: #00d4ff;
+            color: #000;
+            border-color: #00d4ff;
+        }
+        
+        /* Search bar (when active) */
+        .search-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #0a0a0a;
+            z-index: 200;
+            display: none;
+            flex-direction: column;
+        }
+        .search-bar.active { display: flex; }
+        .search-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            gap: 15px;
+        }
+        .search-back {
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .search-input {
+            flex: 1;
+            background: #1a1a1a;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-size: 16px;
+            color: #fff;
+            outline: none;
+        }
+        .search-results {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .search-result-item {
+            padding: 15px;
+            border-bottom: 1px solid #222;
+            cursor: pointer;
+        }
+        .search-result-item:active { background: #111; }
+        
+        /* Bottom nav */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            border-top: 1px solid #222;
+        }
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            color: #666;
+            cursor: pointer;
+        }
+        .nav-item.active { color: #00d4ff; }
+        .nav-icon { font-size: 22px; }
+        .nav-label { font-size: 11px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Search -->
-        <div class="search-section">
-            <input type="text" class="search-box" placeholder="🔍 Search quizzes..." id="searchInput">
+    <!-- Header -->
+    <div class="header">
+        <div class="logo" onclick="goHome()">Quizy</div>
+        <div class="search-icon" onclick="openSearch()">🔍</div>
+    </div>
+    
+    <!-- Tab Nav -->
+    <div class="tab-nav">
+        <div class="tab active" data-tab="home" onclick="switchTab('home')">首页</div>
+        <div class="tab" data-tab="all" onclick="switchTab('all')">全部</div>
+    </div>
+    
+    <!-- Main -->
+    <div class="main">
+        <!-- Home Page -->
+        <div class="page active" id="page-home">
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">🔥 近期热门</div>
+                </div>
+                <div class="card-list" id="hot-list"></div>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">💡 我们推荐</div>
+                </div>
+                <div class="card-list" id="recommend-list"></div>
+            </div>
         </div>
         
-        <!-- Hot / Latest -->
-        <div class="section">
-            <div class="section-title">🔥 Latest Hot</div>
-            <div class="hot-scroll" id="hotSection"></div>
+        <!-- All Page -->
+        <div class="page" id="page-all">
+            <div class="filters">
+                <div class="filter-btn active" data-filter="hot" onclick="filterBy('hot')">热度</div>
+                <div class="filter-btn" data-filter="new" onclick="filterBy('new')">最新</div>
+                <div class="filter-btn" data-filter="match" onclick="filterBy('match')">💕 Soulmate</div>
+                <div class="filter-btn" data-filter="which" onclick="filterBy('which')">🎭 Which X</div>
+                <div class="filter-btn" data-filter="type" onclick="filterBy('type')">📝 Type</div>
+                <div class="filter-btn" data-filter="how" onclick="filterBy('how')">📊 How</div>
+                <div class="filter-btn" data-filter="hidden" onclick="filterBy('hidden')">🔮 Secret</div>
+                <div class="filter-btn" data-filter="whatwould" onclick="filterBy('whatwould')">❓ What If</div>
+                <div class="filter-btn" data-filter="pick" onclick="filterBy('pick')">✌️ Pick</div>
+                <div class="filter-btn" data-filter="future" onclick="filterBy('future')">🔮 Future</div>
+            </div>
+            <div class="grid" id="all-list"></div>
         </div>
-        
-        <!-- Classic -->
-        <div class="section">
-            <div class="section-title">⭐ Most Classic</div>
-            <div class="grid-4" id="classicSection"></div>
+    </div>
+    
+    <!-- Bottom Nav -->
+    <div class="bottom-nav">
+        <div class="nav-item active" onclick="switchTab('home')">
+            <div class="nav-icon">🏠</div>
+            <div class="nav-label">首页</div>
         </div>
-        
-        <!-- Personalized -->
-        <div class="section">
-            <div class="section-title">💡 Best For You</div>
-            <div class="grid-4" id="personalSection"></div>
+        <div class="nav-item" onclick="switchTab('all')">
+            <div class="nav-icon">📚</div>
+            <div class="nav-label">全部</div>
         </div>
-        
-        <!-- All -->
-        <div class="section">
-            <div class="section-title">📚 All Tests</div>
-            <div class="all-list" id="allSection"></div>
+    </div>
+    
+    <!-- Search Overlay -->
+    <div class="search-bar" id="search-bar">
+        <div class="search-header">
+            <div class="search-back" onclick="closeSearch()">←</div>
+            <input type="text" class="search-input" placeholder="搜索测试..." id="search-input" oninput="doSearch(this.value)">
         </div>
+        <div class="search-results" id="search-results"></div>
     </div>
 
     <script>
-        // Data - will be loaded from JSON
+        // Data
         const categories = [
-            {id: 'match', name: '💕 Match / Soulmate'},
-            {id: 'which', name: '🎭 Which X Are You'},
-            {id: 'type', name: '📝 What\'s Your Type'},
-            {id: 'how', name: '📊 How Adjective'},
-            {id: 'hidden', name: '🔮 Hidden / Secret'},
-            {id: 'whatwould', name: '❓ What Would You Do'},
-            {id: 'pick', name: '✌️ Pick One'},
-            {id: 'future', name: '🔮 Future / Destiny'}
+            {id: 'match', name: '💕 Match'},
+            {id: 'which', name: '🎭 Which X'},
+            {id: 'type', name: '📝 Type'},
+            {id: 'how', name: '📊 How'},
+            {id: 'hidden', name: '🔮 Secret'},
+            {id: 'whatwould', name: '❓ What If'},
+            {id: 'pick', name: '✌️ Pick'},
+            {id: 'future', name: '🔮 Future'}
         ];
         
         const themes = [
-            {id: 'perfect-match', title: 'Who is your perfect match in life?', is_hot: true, category: 'match'},
-            {id: 'real-soulmate', title: 'Who is your real soulmate?', is_hot: true, category: 'match'},
-            {id: 'ideal-boyfriend', title: 'Who would be your ideal boyfriend?', is_hot: true, category: 'match'},
-            {id: 'perfect-girlfriend', title: 'Who would be your perfect girlfriend?', is_hot: true, category: 'match'},
-            {id: 'true-love-match', title: 'Which character is your true love match?', is_hot: true, category: 'match'},
-            {id: 'destiny-partner', title: 'Who is your destiny partner?', is_hot: true, category: 'match'},
-            {id: 'movie-character', title: 'Which movie character are you?', is_hot: true, category: 'which'},
-            {id: 'mythical-creature', title: 'Which mythical creature are you?', category: 'which'},
-            {id: 'kind-of-friend', title: 'Which kind of friend are you?', category: 'which'},
-            {id: 'aesthetic-style', title: 'Which aesthetic style are you?', category: 'which'},
-            {id: 'energy-archetype', title: 'Which energy archetype are you?', category: 'which'},
-            {id: 'song-describes', title: 'Which song describes you?', category: 'which'},
-            {id: 'color-personality', title: 'Which color personality are you?', category: 'which'},
-            {id: 'real-love-type', title: 'What\'s your real love type?', category: 'type'},
-            {id: 'true-aesthetic-type', title: 'What\'s your true aesthetic type?', category: 'type'},
-            {id: 'inner-energy-type', title: 'What\'s your inner energy type?', category: 'type'},
-            {id: 'friendship-type', title: 'What\'s your friendship type?', category: 'type'},
-            {id: 'dating-type', title: 'What\'s your dating type?', category: 'type'},
-            {id: 'vibe-type', title: 'What\'s your vibe type?', category: 'type'},
-            {id: 'loyal-really', title: 'How loyal are you really?', category: 'how'},
-            {id: 'romantic-deep', title: 'How romantic are you deep down?', category: 'how'},
-            {id: 'brave-in-love', title: 'How brave are you in love?', category: 'how'},
-            {id: 'toxic-personality', title: 'How toxic is your personality?', category: 'how'},
-            {id: 'kind-heart', title: 'How kind is your heart?', category: 'how'},
-            {id: 'confident-actually', title: 'How confident are you actually?', category: 'how'},
-            {id: 'sensitive', title: 'How sensitive are you?', category: 'how'},
-            {id: 'hidden-superpower', title: 'What\'s your hidden superpower?', category: 'hidden'},
-            {id: 'secret-trauma', title: 'What\'s your secret inner trauma?', category: 'hidden'},
-            {id: 'hidden-talent', title: 'What\'s your hidden natural talent?', category: 'hidden'},
-            {id: 'dark-side', title: 'What\'s your dark side personality?', category: 'hidden'},
-            {id: 'secret-desire', title: 'What\'s your secret desire?', category: 'hidden'},
-            {id: 'hidden-fear', title: 'What\'s your hidden fear?', category: 'hidden'},
-            {id: 'secret-strength', title: 'What\'s your secret strength?', category: 'hidden'},
-            {id: 'love-crisis', title: 'What would you do in a love crisis?', category: 'whatwould'},
-            {id: 'win-lottery', title: 'What would you do if you won the lottery?', category: 'whatwould'},
-            {id: 'dangerous-situation', title: 'What would you do in a dangerous situation?', category: 'whatwould'},
-            {id: 'for-dream', title: 'What would you do for your dream?', category: 'whatwould'},
-            {id: 'meet-idol', title: 'What would you do if you met your idol?', category: 'whatwould'},
-            {id: 'breakup', title: 'What would you do in a breakup?', category: 'whatwould'},
-            {id: 'pick-personality', title: 'Pick one, we\'ll guess your personality.', category: 'pick'},
-            {id: 'choose-type', title: 'Choose one, we\'ll reveal your real type.', category: 'pick'},
-            {id: 'pick-soulmate', title: 'Pick your favorite, find your soulmate.', category: 'pick'},
-            {id: 'choose-dark-side', title: 'Choose one, discover your dark side.', category: 'pick'},
-            {id: 'pick-picture', title: 'Pick a picture, know your future.', category: 'pick'},
-            {id: 'choose-true-self', title: 'Choose an option, see your true self.', category: 'pick'},
-            {id: 'future-love', title: 'What\'s your future love life like?', category: 'future'},
-            {id: 'who-marry', title: 'Who will you end up marrying?', category: 'future'},
-            {id: 'real-destiny', title: 'What\'s your real destiny?', category: 'future'},
-            {id: 'future-hold', title: 'What does your future hold for you?', category: 'future'},
-            {id: 'meet-soulmate', title: 'When will you meet your soulmate?', category: 'future'}
+            {id: 'perfect-match', title: 'Who is your perfect match?', category: 'match', hot: 1200000},
+            {id: 'real-soulmate', title: 'Who is your real soulmate?', category: 'match', hot: 980000},
+            {id: 'ideal-boyfriend', title: 'Who would be your ideal boyfriend?', category: 'match', hot: 850000},
+            {id: 'perfect-girlfriend', title: 'Who would be your perfect girlfriend?', category: 'match', hot: 820000},
+            {id: 'true-love-match', title: 'Which character is your true love?', category: 'match', hot: 780000},
+            {id: 'destiny-partner', title: 'Who is your destiny partner?', category: 'match', hot: 650000},
+            {id: 'movie-character', title: 'Which movie character are you?', category: 'which', hot: 920000},
+            {id: 'mythical-creature', title: 'Which mythical creature are you?', category: 'which', hot: 450000},
+            {id: 'kind-of-friend', title: 'Which kind of friend are you?', category: 'which', hot: 380000},
+            {id: 'aesthetic-style', title: 'Which aesthetic style are you?', category: 'which', hot: 320000},
+            {id: 'energy-archetype', title: 'Which energy archetype are you?', category: 'which', hot: 280000},
+            {id: 'song-describes', title: 'Which song describes you?', category: 'which', hot: 250000},
+            {id: 'color-personality', title: 'Which color personality are you?', category: 'which', hot: 220000},
+            {id: 'real-love-type', title: "What's your real love type?", category: 'type', hot: 420000},
+            {id: 'true-aesthetic-type', title: "What's your true aesthetic type?", category: 'type', hot: 180000},
+            {id: 'inner-energy-type', title: "What's your inner energy type?", category: 'type', hot: 150000},
+            {id: 'friendship-type', title: "What's your friendship type?", category: 'type', hot: 140000},
+            {id: 'dating-type', title: "What's your dating type?", category: 'type', hot: 130000},
+            {id: 'vibe-type', title: "What's your vibe type?", category: 'type', hot: 120000},
+            {id: 'loyal-really', title: 'How loyal are you really?', category: 'how', hot: 210000},
+            {id: 'romantic-deep', title: 'How romantic are you deep down?', category: 'how', hot: 190000},
+            {id: 'brave-in-love', title: 'How brave are you in love?', category: 'how', hot: 170000},
+            {id: 'toxic-personality', title: 'How toxic is your personality?', category: 'how', hot: 310000},
+            {id: 'kind-heart', title: 'How kind is your heart?', category: 'how', hot: 160000},
+            {id: 'confident-actually', title: 'How confident are you actually?', category: 'how', hot: 145000},
+            {id: 'sensitive', title: 'How sensitive are you?', category: 'how', hot: 130000},
+            {id: 'hidden-superpower', title: "What's your hidden superpower?", category: 'hidden', hot: 520000},
+            {id: 'secret-trauma', title: "What's your secret inner trauma?", category: 'hidden', hot: 380000},
+            {id: 'hidden-talent', title: "What's your hidden talent?", category: 'hidden', hot: 350000},
+            {id: 'dark-side', title: "What's your dark side?", category: 'hidden', hot: 480000},
+            {id: 'secret-desire', title: "What's your secret desire?", category: 'hidden', hot: 290000},
+            {id: 'hidden-fear', title: "What's your hidden fear?", category: 'hidden', hot: 240000},
+            {id: 'secret-strength', title: "What's your secret strength?", category: 'hidden', hot: 200000},
+            {id: 'love-crisis', title: 'What would you do in a love crisis?', category: 'whatwould', hot: 180000},
+            {id: 'win-lottery', title: 'What if you won the lottery?', category: 'whatwould', hot: 320000},
+            {id: 'dangerous-situation', title: 'What in a dangerous situation?', category: 'whatwould', hot: 150000},
+            {id: 'for-dream', title: 'What would you do for your dream?', category: 'whatwould', hot: 140000},
+            {id: 'meet-idol', title: 'What if you met your idol?', category: 'whatwould', hot: 120000},
+            {id: 'breakup', title: 'What would you do in a breakup?', category: 'whatwould', hot: 280000},
+            {id: 'pick-personality', title: "Pick one, we'll guess your personality", category: 'pick', hot: 220000},
+            {id: 'choose-type', title: "Choose one, reveal your real type", category: 'pick', hot: 180000},
+            {id: 'pick-soulmate', title: "Pick your favorite, find soulmate", category: 'pick', hot: 160000},
+            {id: 'choose-dark-side', title: "Choose one, discover dark side", category: 'pick', hot: 210000},
+            {id: 'pick-picture', title: "Pick a picture, know your future", category: 'pick', hot: 190000},
+            {id: 'choose-true-self', title: "Choose, see your true self", category: 'pick', hot: 140000},
+            {id: 'future-love', title: "What's your future love like?", category: 'future', hot: 450000},
+            {id: 'who-marry', title: 'Who will you end up marrying?', category: 'future', hot: 580000},
+            {id: 'real-destiny', title: "What's your real destiny?", category: 'future', hot: 320000},
+            {id: 'future-hold', title: 'What does your future hold?', category: 'future', hot: 280000},
+            {id: 'meet-soulmate', title: 'When will you meet soulmate?', category: 'future', hot: 490000}
         ];
-
-        // Hot tests
-        const hotTests = themes.filter(t => t.is_hot);
-        document.getElementById('hotSection').innerHTML = hotTests.map(t => `
-            <div class="hot-card" onclick="goToQuiz('${t.id}')">
-                <div class="title">${t.title}</div>
-                <div class="count">1.2M tests taken</div>
-            </div>
-        `).join('');
-
-        // Classic (first 8)
-        const classicTests = themes.slice(0, 8);
-        document.getElementById('classicSection').innerHTML = classicTests.map(t => `
-            <div class="grid-card" onclick="goToQuiz('${t.id}')">
-                <div class="title">${t.title}</div>
-                <div class="desc">Classic quiz</div>
-            </div>
-        `).join('');
-
-        // Personalized (8 random)
-        const shuffled = themes.sort(() => 0.5 - Math.random()).slice(0, 8);
-        document.getElementById('personalSection').innerHTML = shuffled.map(t => `
-            <div class="grid-card" onclick="goToQuiz('${t.id}')">
-                <div class="title">${t.title}</div>
-                <div class="desc">Recommended for you</div>
-            </div>
-        `).join('');
-
-        // All
-        document.getElementById('allSection').innerHTML = themes.map(t => `
-            <div class="all-item" onclick="goToQuiz('${t.id}')">
-                <div class="title">${t.title}</div>
-                <div class="arrow">→</div>
-            </div>
-        `).join('');
-
-        // Search
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const q = e.target.value.toLowerCase();
-            if (!q) {
-                document.querySelector('.all-list').innerHTML = themes.map(t => `
-                    <div class="all-item" onclick="goToQuiz('${t.id}')">
-                        <div class="title">${t.title}</div>
-                        <div class="arrow">→</div>
-                    </div>
-                `).join('');
-                return;
+        
+        let currentFilter = 'hot';
+        
+        // Init
+        function init() {
+            renderHome();
+            renderAll();
+        }
+        
+        function renderHome() {
+            // Hot - sorted by hot
+            const hot = [...themes].sort((a,b) => b.hot - a.hot).slice(0, 10);
+            document.getElementById('hot-list').innerHTML = hot.map(t => createCard(t)).join('');
+            
+            // Recommend - random
+            const shuffled = [...themes].sort(() => 0.5 - Math.random()).slice(0, 10);
+            document.getElementById('recommend-list').innerHTML = shuffled.map(t => createCard(t)).join('');
+        }
+        
+        function renderAll() {
+            let list = [...themes];
+            
+            // Filter
+            if (currentFilter === 'hot') {
+                list.sort((a,b) => b.hot - a.hot);
+            } else if (currentFilter === 'new') {
+                // Simulated new - just reverse
+                list.reverse();
+            } else {
+                list = list.filter(t => t.category === currentFilter);
             }
-            const filtered = themes.filter(t => t.title.toLowerCase().includes(q));
-            document.querySelector('.all-list').innerHTML = filtered.map(t => `
-                <div class="all-item" onclick="goToQuiz('${t.id}')">
-                    <div class="title">${t.title}</div>
-                    <div class="arrow">→</div>
-                </div>
-            `).join('');
-        });
-
-        function goToQuiz(id) {
+            
+            document.getElementById('all-list').innerHTML = list.map(t => createCard(t)).join('');
+        }
+        
+        function createCard(t) {
+            const count = (t.hot / 10000).toFixed(1);
+            return `<div class="card" onclick="goQuiz('${t.id}')">
+                <div class="card-title">${t.title}</div>
+                <div class="card-meta">${count}W tests</div>
+            </div>`;
+        }
+        
+        function filterBy(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.filter === filter);
+            });
+            renderAll();
+        }
+        
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(`page-${tab}`).classList.add('active');
+            
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            if (tab === 'home') document.querySelectorAll('.nav-item')[0].classList.add('active');
+            else document.querySelectorAll('.nav-item')[1].classList.add('active');
+        }
+        
+        function goHome() {
+            switchTab('home');
+        }
+        
+        function goQuiz(id) {
             window.location.href = 'quiz.html?id=' + id;
         }
+        
+        function openSearch() {
+            document.getElementById('search-bar').classList.add('active');
+            document.getElementById('search-input').focus();
+        }
+        
+        function closeSearch() {
+            document.getElementById('search-bar').classList.remove('active');
+            document.getElementById('search-input').value = '';
+            document.getElementById('search-results').innerHTML = '';
+        }
+        
+        function doSearch(q) {
+            if (!q) {
+                document.getElementById('search-results').innerHTML = '';
+                return;
+            }
+            const results = themes.filter(t => t.title.toLowerCase().includes(q.toLowerCase()));
+            document.getElementById('search-results').innerHTML = results.map(t => `
+                <div class="search-result-item" onclick="goQuiz('${t.id}'); closeSearch();">
+                    ${t.title}
+                </div>
+            `).join('');
+        }
+        
+        init();
     </script>
 </body>
 </html>
