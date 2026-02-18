@@ -118,46 +118,69 @@
     </div>
 
     <script>
-        // 模拟数据
+        // Quiz data
         const data = {
             categories: [
-                { id: 'hot', name: '🔥 全球顶流', icon: '🔥' },
-                { id: 'psychology', name: '🧠 心理人格', icon: '🧠' },
-                { id: 'entertainment', name: '🎮 趣味娱乐', icon: '🎮' }
+                { id: 'match', name: '💕 Match / Soulmate', icon: '💕' },
+                { id: 'which', name: '🎭 Which X Are You', icon: '🎭' },
+                { id: 'type', name: '📝 What\'s Your Type', icon: '📝' },
+                { id: 'how', name: '📊 How Adjective Are You', icon: '📊' },
+                { id: 'hidden', name: '🔮 Hidden / Secret', icon: '🔮' },
+                { id: 'whatwould', name: '❓ What Would You Do', icon: '❓' },
+                { id: 'pick', name: '✌️ Pick One / Choose', icon: '✌️' },
+                { id: 'future', name: '🔮 Future / Destiny', icon: '🔮' }
             ],
             themes: [
-                {
-                    id: 'mbti',
-                    category_id: 'hot',
-                    title: 'MBTI 16型人格',
-                    description: '全球最火的性格测试',
-                    is_hot: true,
-                    hot_rank: 1,
-                    tag: 'MBTI'
-                },
-                {
-                    id: 'harrypotter',
-                    category_id: 'entertainment',
-                    title: '哈利波特',
-                    description: '霍格沃茨魔法学院人格匹配',
-                    is_hot: true,
-                    hot_rank: 2
-                },
-                {
-                    id: 'zhenhuan',
-                    category_id: 'entertainment',
-                    title: '甄嬛传',
-                    description: '你在后宫是什么段位？',
-                    is_hot: true,
-                    hot_rank: 3
-                },
-                {
-                    id: 'marvel',
-                    category_id: 'entertainment',
-                    title: '漫威/DC',
-                    description: '超级英雄人格匹配',
-                    is_hot: false
-                }
+                { id: 'perfect-match', category_id: 'match', title: 'Who is your perfect match in life?', is_hot: true, hot_rank: 1 },
+                { id: 'real-soulmate', category_id: 'match', title: 'Who is your real soulmate?', is_hot: true, hot_rank: 2 },
+                { id: 'ideal-boyfriend', category_id: 'match', title: 'Who would be your ideal boyfriend?', is_hot: true, hot_rank: 3 },
+                { id: 'perfect-girlfriend', category_id: 'match', title: 'Who would be your perfect girlfriend?', is_hot: true, hot_rank: 4 },
+                { id: 'true-love-match', category_id: 'match', title: 'Which character is your true love match?', is_hot: true, hot_rank: 5 },
+                { id: 'destiny-partner', category_id: 'match', title: 'Who is your destiny partner?', is_hot: true, hot_rank: 6 },
+                { id: 'movie-character', category_id: 'which', title: 'Which movie character are you?', is_hot: true, hot_rank: 7 },
+                { id: 'mythical-creature', category_id: 'which', title: 'Which mythical creature are you?', is_hot: false },
+                { id: 'kind-of-friend', category_id: 'which', title: 'Which kind of friend are you?', is_hot: false },
+                { id: 'aesthetic-style', category_id: 'which', title: 'Which aesthetic style are you?', is_hot: false },
+                { id: 'energy-archetype', category_id: 'which', title: 'Which energy archetype are you?', is_hot: false },
+                { id: 'song-describes', category_id: 'which', title: 'Which song describes you?', is_hot: false },
+                { id: 'color-personality', category_id: 'which', title: 'Which color personality are you?', is_hot: false },
+                { id: 'real-love-type', category_id: 'type', title: 'What\'s your real love type?', is_hot: false },
+                { id: 'true-aesthetic-type', category_id: 'type', title: 'What\'s your true aesthetic type?', is_hot: false },
+                { id: 'inner-energy-type', category_id: 'type', title: 'What\'s your inner energy type?', is_hot: false },
+                { id: 'friendship-type', category_id: 'type', title: 'What\'s your friendship type?', is_hot: false },
+                { id: 'dating-type', category_id: 'type', title: 'What\'s your dating type?', is_hot: false },
+                { id: 'vibe-type', category_id: 'type', title: 'What\'s your vibe type?', is_hot: false },
+                { id: 'loyal-really', category_id: 'how', title: 'How loyal are you really?', is_hot: false },
+                { id: 'romantic-deep', category_id: 'how', title: 'How romantic are you deep down?', is_hot: false },
+                { id: 'brave-in-love', category_id: 'how', title: 'How brave are you in love?', is_hot: false },
+                { id: 'toxic-personality', category_id: 'how', title: 'How toxic is your personality?', is_hot: false },
+                { id: 'kind-heart', category_id: 'how', title: 'How kind is your heart?', is_hot: false },
+                { id: 'confident-actually', category_id: 'how', title: 'How confident are you actually?', is_hot: false },
+                { id: 'sensitive', category_id: 'how', title: 'How sensitive are you?', is_hot: false },
+                { id: 'hidden-superpower', category_id: 'hidden', title: 'What\'s your hidden superpower?', is_hot: false },
+                { id: 'secret-trauma', category_id: 'hidden', title: 'What\'s your secret inner trauma?', is_hot: false },
+                { id: 'hidden-talent', category_id: 'hidden', title: 'What\'s your hidden natural talent?', is_hot: false },
+                { id: 'dark-side', category_id: 'hidden', title: 'What\'s your dark side personality?', is_hot: false },
+                { id: 'secret-desire', category_id: 'hidden', title: 'What\'s your secret desire?', is_hot: false },
+                { id: 'hidden-fear', category_id: 'hidden', title: 'What\'s your hidden fear?', is_hot: false },
+                { id: 'secret-strength', category_id: 'hidden', title: 'What\'s your secret strength?', is_hot: false },
+                { id: 'love-crisis', category_id: 'whatwould', title: 'What would you do in a love crisis?', is_hot: false },
+                { id: 'win-lottery', category_id: 'whatwould', title: 'What would you do if you won the lottery?', is_hot: false },
+                { id: 'dangerous-situation', category_id: 'whatwould', title: 'What would you do in a dangerous situation?', is_hot: false },
+                { id: 'for-dream', category_id: 'whatwould', title: 'What would you do for your dream?', is_hot: false },
+                { id: 'meet-idol', category_id: 'whatwould', title: 'What would you do if you met your idol?', is_hot: false },
+                { id: 'breakup', category_id: 'whatwould', title: 'What would you do in a breakup?', is_hot: false },
+                { id: 'pick-personality', category_id: 'pick', title: 'Pick one, we\'ll guess your personality.', is_hot: false },
+                { id: 'choose-type', category_id: 'pick', title: 'Choose one, we\'ll reveal your real type.', is_hot: false },
+                { id: 'pick-soulmate', category_id: 'pick', title: 'Pick your favorite, find your soulmate.', is_hot: false },
+                { id: 'choose-dark-side', category_id: 'pick', title: 'Choose one, discover your dark side.', is_hot: false },
+                { id: 'pick-picture', category_id: 'pick', title: 'Pick a picture, know your future.', is_hot: false },
+                { id: 'choose-true-self', category_id: 'pick', title: 'Choose an option, see your true self.', is_hot: false },
+                { id: 'future-love', category_id: 'future', title: 'What\'s your future love life like?', is_hot: false },
+                { id: 'who-marry', category_id: 'future', title: 'Who will you end up marrying?', is_hot: false },
+                { id: 'real-destiny', category_id: 'future', title: 'What\'s your real destiny?', is_hot: false },
+                { id: 'future-hold', category_id: 'future', title: 'What does your future hold for you?', is_hot: false },
+                { id: 'meet-soulmate', category_id: 'future', title: 'When will you meet your soulmate?', is_hot: false }
             ]
         };
 
