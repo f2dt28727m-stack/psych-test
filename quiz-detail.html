@@ -64,6 +64,8 @@ document.getElementById('app').innerHTML=`
 <div class="stats"><div class="stat-item"><div class="stat-num">${(q.l/1000).toFixed(1)}K</div><div class="stat-label">Likes</div></div><div class="stat-item"><div class="stat-num">${(q.ts/10000).toFixed(1)}W</div><div class="stat-label">Tests</div></div><div class="stat-item"><div class="stat-num">${(q.sh/1000).toFixed(1)}K</div><div class="stat-label">Shares</div></div></div>
 <div class="actions"><button class="start-btn" onclick="startQuiz()">Start Now ▶</button><div class="vote-btns"><button class="vote-btn" id="like-btn" onclick="vote('like')"><div class="icon">👍</div><span>${q.l}</span></button><button class="vote-btn" id="dislike-btn" onclick="vote('dislike')"><div class="icon">👎</div><span>${Math.floor(q.l*0.1)}</span></button></div></div>
 <div class="description">${q.d}</div>
+`;
+</script>
 
 <!-- Google AdSense Ad Unit -->
 <ins class="adsbygoogle"
@@ -74,8 +76,6 @@ document.getElementById('app').innerHTML=`
      data-full-width-responsive="true"></ins>
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-`;
 </script>
 </body>
 </html>
