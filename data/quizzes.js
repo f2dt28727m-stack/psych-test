@@ -1,4 +1,19 @@
 const QUIZ_DATA = {
+  "mbti": {
+    name: "MBTI Personality",
+    quizzes: [
+      {id: "harry-potter-soulmate", title: "Which Harry Potter Character Is Your Soulmate?", icon: "⚡", tags: ["Harry Potter", "Soulmate", "MBTI"]},
+      {id: "marvel-cp", title: "Who Is Your Perfect Marvel CP?", icon: "🕷️", tags: ["Marvel", "Superhero", "MBTI"]},
+      {id: "workplace-partner", title: "Find Your Perfect Workplace Partner", icon: "💼", tags: ["Workplace", "Team", "MBTI"]},
+      {id: "pop-culture-friend", title: "Who Is Your Ideal Best Friend in Pop Culture?", icon: "🎬", tags: ["Best Friend", "Pop Culture", "MBTI"]},
+      {id: "disney-princess", title: "Which Disney Princess Is Your Kindred Spirit?", icon: "🏰", tags: ["Disney", "Princess", "MBTI"]},
+      {id: "kdrama-partner", title: "Find Your Ideal K-Drama Partner", icon: "📺", tags: ["K-Drama", "Partner", "MBTI"]},
+      {id: "video-game-team", title: "Which Video Game Character Are You Meant To Team Up With?", icon: "🎮", tags: ["Video Games", "Gaming", "MBTI"]},
+      {id: "travel-buddy", title: "What's Your Ideal Travel Buddy Personality?", icon: "✈️", tags: ["Travel", "Adventure", "MBTI"]},
+      {id: "anime-compat", title: "Which Anime Character Are You Most Compatible With?", icon: "🎌", tags: ["Anime", "Character", "MBTI"]},
+      {id: "study-buddy", title: "Find Your Perfect Study Buddy Personality", icon: "📚", tags: ["Study", "Education", "MBTI"]}
+    ]
+  },
   "match": {
     name: "Match / Soulmate",
     quizzes: [
