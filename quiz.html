@@ -54,6 +54,48 @@ const quizId=params.get('id')||'perfect-match';
 
 // Question banks - 36 each
 const QB={
+'harry-potter-soulmate':[
+{q:1,t:'At the Great Hall feast, you...',o:['Join a big group immediately','Sit quietly with 1-2 friends','Keep to yourself mostly','Talk to new people excitedly']},
+{q:2,t:'When you learn a new spell, you...',o:['Show it to everyone right away','Practice alone quietly','Teach one friend carefully','Gather a group to practice']},
+{q:3,t:"In Dumbledore's Army, you...",o:['Lead the group practice','Watch and learn silently','Help one nearby person','Cheer and encourage everyone']},
+{q:4,t:'At the Yule Ball, you...',o:['Dance with many people','Stay with one partner','Sit and observe the crowd','Make new friends around']},
+{q:5,t:'When you hear a Hogwarts rumor...',o:['Discuss it with friends','Keep it to yourself','Tell only your best friend','Ask many people opinions']},
+{q:6,t:'In Potions class, you prefer...',o:['Working in a lively group','Working alone quietly','Working with one partner','Chatting while you work']},
+{q:7,t:'If you find a secret passage...',o:['Bring friends to explore','Explore alone first','Tell only one trusted person','Announce it to your house']},
+{q:8,t:'When you feel upset...',o:['Talk to friends to feel better','Stay alone to calm down','Read or write quietly','Hang out to distract yourself']},
+{q:9,t:'On a free weekend...',o:['Go out with a big group','Stay in and relax alone','Go out with one friend','Make spontaneous plans']},
+{q:10,t:'When learning a spell, focus on...',o:['Exact wand movements','The magic feeling','Step-by-step rules','Creative new uses']},
+{q:11,t:'You choose classes based on...',o:['Practical real-world use','Mystery and curiosity','Clear structure and rules','Imagination and ideas']},
+{q:12,t:'Facing a Dementor...',o:['Cast the spell as trained','Trust your intuition','Follow every instruction','Think of a creative solution']},
+],
+'marvel-cp':[
+{q:1,t:'At an Avengers party...',o:['Mingle with every hero','Stay in a quiet corner','Talk only to close friends','Meet new heroes excitedly']},
+{q:2,t:'After saving the world...',o:['Celebrate with the whole team','Rest alone in your space','Unwind with one friend','Share stories with everyone']},
+{q:3,t:'On a mission...',o:['Communicate nonstop with the team','Do your part quietly','Help nearby teammates','Lead and encourage the group']},
+{q:4,t:'Training new heroes...',o:['Guide and interact actively','Demonstrate and step back','Coach one person closely','Motivate the whole group']},
+{q:5,t:'Hearing villain rumors...',o:['Call a team meeting','Investigate alone first','Share only with trusted ones','Discuss with many teammates']},
+{q:6,t:'Testing new gear...',o:['Show it off to everyone','Test alone privately','Try it with one partner','Demo it for the team']},
+{q:7,t:'At an awards ceremony...',o:['Enjoy the spotlight','Avoid attention','Stay with close friends','Chat with fans and heroes']},
+{q:8,t:'When stressed after battle...',o:['Talk to teammates','Be alone to recharge','Quietly focus on recovery','Surround yourself with people']},
+{q:9,t:'Discovering a new planet...',o:['Bring the team to explore','Explore alone first','Take one partner','Lead a big expedition']},
+{q:10,t:'Mastering a new power...',o:['Basic control and usage','Hidden potential and creativity','Stable and safe operation','New combinations and ideas']},
+{q:11,t:'You choose missions based on...',o:['Urgency and real impact','Mystery and discovery','Clear goals and safety','Unknowns and adventure']},
+{q:12,t:'Facing Thanos...',o:['Use trained tactics','Trust your intuition','Stick to proven plans','Invent new strategies']},
+],
+'workplace-partner':[
+{q:1,t:'In team meetings...',o:['Speak up and lead discussion','Listen quietly and think','Share with close colleagues','Initiate new conversations']},
+{q:2,t:'At office parties...',o:['Mingle with everyone','Stay in small groups','Talk to one or two people','Meet new coworkers']},
+{q:3,t:'When brainstorming...',o:['Share ideas openly','Think alone first','Discuss with a partner','Inspire the whole group']},
+{q:4,t:'After work...',o:['Hang out with colleagues','Go home and relax alone','Meet one coworker','Join group activities']},
+{q:5,t:'When you need help...',o:['Ask the group openly','Figure it out alone','Ask a trusted friend','Discuss with many people']},
+{q:6,t:'Working on a project...',o:['Collaborate actively','Work independently','Pair with one partner','Communicate constantly']},
+{q:7,t:'When you have a breakthrough...',o:['Announce to the team','Keep it to yourself','Tell a close coworker','Present to everyone']},
+{q:8,t:'When stressed at work...',o:['Talk with teammates','Calm down alone','Vent to one friend','Be around people to relax']},
+{q:9,t:'On a team outing...',o:['Join all activities','Stay back and observe','Stick with one friend','Initiate fun group games']},
+{q:10,t:'You prefer work that...',o:['Is concrete and practical','Involves creativity and ideas','Has clear steps','Has room for innovation']},
+{q:11,t:'Solving problems...',o:['Facts and details','Patterns and big picture','Real current issues','Future possibilities']},
+{q:12,t:'Learning new software...',o:['Follow tutorials step by step','Explore and experiment','Master basic functions','Try advanced features early']},
+],
 'perfect-match':[
 {q:1,t:'When someone hurts you, what do you do?',o:['Confront directly','Write a letter','Pretend nothing','Talk to friend']},
 {q:2,t:'Ideal Friday night?',o:['Go to party','Stay home reading','Go on date','Hang with friends']},
@@ -172,6 +214,9 @@ const QB={
 
 // Results for each quiz
 const RS={
+'harry-potter-soulmate':{A:{n:'Harry Potter',d:'Brave, loyal, and determined. You value friendship above all.'},B:{n:'Hermione Granger',d:'Smart, logical, and fiercely loyal. You solve problems with wisdom.'},C:{n:'Ron Weasley',d:'Loyal, humorous, and dependable. You are the best friend anyone could have.'},D:{n:'Draco Malfoy',d:'Ambitious and complex. You have hidden depths others might not see.'}},
+'marvel-cp':{A:{n:'Iron Man',d:'Genius, billionaire, hero. You are brilliant and have a big heart.'},B:{n:'Captain America',d:'The patriotic hero. You value honor, duty, and doing what's right.'},C:{n:'Thor',d:'Noble and powerful. You are a natural leader with great responsibility.'},D:{n:'Hulk',d:'Strong and misunderstood. You have immense power and depth.'}},
+'workplace-partner':{A:{n:'The Leader',d:'Natural born leader who takes charge and gets things done.'},B:{n:'The Innovator',d:'Creative thinker who finds solutions others miss.'},C:{n:'The Supporter',d:'Loyal and reliable, always there for the team.'},D:{n:'The Analyzer',d:'Detail-oriented and logical, you ensure everything is perfect.'},
 'perfect-match':{A:{n:'Romeo',d:'The passionate romantic. You love deeply and intensely, never holding back your feelings.'},B:{n:'Mr. Darcy',d:'The proud but lovable. Your love is subtle but deep, showing care through actions.'},C:{n:'Jack',d:'The adventurous soulmate. You seek excitement and passion in relationships.'},D:{n:'Noah',d:'The devoted partner. Steady, loyal, and always there for your loved one.'}},
 'real-soulmate':{A:{n:'The Empath',d:'You connect deeply with others and value emotional intimacy above all.'},B:{n:'The Adventurer',d:'You need a partner who can keep up with your spontaneous spirit.'},C:{n:'The Guardian',d:'You are the steady rock that others can always count on.'},D:{n:'The Intellectual',d:'You seek a mind that matches yours in深度.'}},
 'movie-character':{A:{n:'The Hero',d:'Brave, determined, and always ready to save the day.'},B:{n:'The Villain',d:'Complex, mysterious, and misunderstood.'},C:{n:'The Sidekick',d:'Loyal, funny, and the best friend anyone could have.'},D:{n:'The Love Interest',d:'Romantic, passionate, and captivating.'}}
@@ -235,7 +280,7 @@ else{document.getElementById('v-dislike').classList.add('disliked');dislikedR=tr
 }
 }
 function goRandom(){
-const ids=['perfect-match','real-soulmate','movie-character'];
+const ids=['harry-potter-soulmate','marvel-cp','workplace-partner','perfect-match','real-soulmate','movie-character'];
 const rid=ids[Math.floor(Math.random()*ids.length)];
 window.location.href='quiz-detail.html?id='+rid;
 }
